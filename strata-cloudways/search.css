@@ -1,0 +1,21 @@
+/* Adjust the width to your desired size */
+.search {
+  --padding: 14px;
+  display: flex;
+  align-items: center;
+  padding: var(--padding);
+  border-radius: 28px;
+  background-color: #f6f6f6;
+  width: 400px; /* Set a fixed width for the search container */
+}
+
+.search-input {
+  font-size: 16px;
+  font-family: 'Lexend', sans-serif;
+  color: #333333;
+  margin-left: var(--padding);
+  border: none;
+  outline: none;
+  background: transparent;
+  width: 100%; /* Takes up the remaining space inside the container */
+}

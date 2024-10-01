@@ -1,0 +1,19 @@
+[
+  {
+    "name": "Reports",
+    "icon": "fa-solid fa-clipboard-list",
+    "href": "/user/home"
+  },
+
+  {
+    "name": "Shared Reports",
+    "icon": "fa-solid fa-clipboard-list",
+    "href": "/user/shared"
+  },
+
+  {
+    "name": "Create Report",
+    "icon": "fa-solid fa-toolbox",
+    "href": "/user/create"
+  }
+]

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strata Report Viewer</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <div class="container mt-5">
+        <h2 class="text-center">View Your Strata Report Information</h2>
+        <form id="infoForm" class="needs-validation" novalidate>
+            <!-- Full Name Field -->
+            <div class="mb-3">
+                <label for="fullName" class="form-label">Full Name</label>
+                <input type="text" class="form-control" id="fullName" name="fullName" required>
+                <div class="invalid-feedback">
+                    Please enter your full name.
+                </div>
+            </div>
+
+            <!-- Email Field -->
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" name="email" required>
+                <div class="invalid-feedback">
+                    Please enter a valid email address.
+                </div>
+            </div>
+
+            <!-- Code Field -->
+            <div class="mb-3">
+                <label for="code" class="form-label">Code</label>
+                <input type="text" class="form-control" id="code" name="code" required>
+                <div class="invalid-feedback">
+                    Please enter the code.
+                </div>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="d-grid">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </form>
+
+        <!-- Alert for Response -->
+        <div id="responseMessage" class="mt-3"></div>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            $('#infoForm').on('submit', function (event) {
+                event.preventDefault(); // Prevent default form submission
+
+                if (this.checkValidity()) {
+                    var fullName = $('#fullName').val();
+                    var email = $('#email').val();
+                    var code = $('#code').val();
+
+                    $.ajax({
+                        url: '/api/clientInfo.php', 
+                        type: 'POST',
+                        dataType: 'json',
+                        contentType: 'application/json',
+                        data: JSON.stringify({
+                            fullName: fullName,
+                            email: email,
+                            code: code
+                        }),
+                        success: function (response) {
+                            if (response.success) {
+                                $('#responseMessage').html('<div class="alert alert-success">' + response.message + '</div>');
+                                
+                                // Trigger another AJAX to fetch report_id using the code
+                                $.ajax({
+                                    url: '/api/viewreport.php',  
+                                    type: 'POST',
+                                    dataType: 'json',
+                                    contentType: 'application/json',
+                                    data: JSON.stringify({ code: code }),
+                                    success: function (getResponse) {
+                                        if (getResponse.success) {
+                                            $('#responseMessage').append('<div class="alert alert-info">Token: ' + getResponse.token + ', Report ID: ' + getResponse.report_id + ', User ID: ' + getResponse.user_id + '</div>');
+                                            
+                                            // Trigger another AJAX to fetch unit info using the report_id
+                                            $.ajax({
+                                                url: '/api/getUnits.php',  
+                                                type: 'POST',
+                                                dataType: 'json',
+                                                contentType: 'application/json',
+                                                data: JSON.stringify({ id: getResponse.report_id }),
+                                                success: function (unitResponse) {
+                                                    if (unitResponse.success) {
+                                                        $('#responseMessage').append('<div class="alert alert-info">Address: ' + unitResponse.address + ', Unit: ' + unitResponse.unit_number + '</div>');
+                                                        const rootUrl = window.location.protocol + "//" + window.location.hostname;
+                                                        window.location.href = `${rootUrl}/user/generate-report/?view=${getResponse.report_id}/${unitResponse.address}/${unitResponse.unit_number}&token=${getResponse.token}`;
+                                                    } else {
+                                                        $('#responseMessage').append('<div class="alert alert-warning">Error fetching Unit Info: ' + unitResponse.error + '</div>');
+                                                    }
+                                                },
+                                                error: function () {
+                                                    $('#responseMessage').append('<div class="alert alert-danger">Failed to fetch Unit Info. Please try again later.</div>');
+                                                }
+                                            });
+
+                                        } else {
+                                            $('#responseMessage').append('<div class="alert alert-warning">Error fetching Report ID: ' + getResponse.error + '</div>');
+                                        }
+                                    },
+                                    error: function () {
+                                        $('#responseMessage').append('<div class="alert alert-danger">Failed to fetch Report ID. Please try again later.</div>');
+                                    }
+                                });
+
+                            } else {
+                                $('#responseMessage').html('<div class="alert alert-danger">' + response.error + '</div>');
+                            }
+                        },
+                        error: function () {
+                            $('#responseMessage').html('<div class="alert alert-danger">Failed to submit the form. Please try again later.</div>');
+                        }
+                    });
+                }
+
+                this.classList.add('was-validated');
+            });
+        });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
+
+

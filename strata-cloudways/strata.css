@@ -1,0 +1,113 @@
+/*- Font sizes (px)
+10 / 12 / 14 / 16 / 18 / 20 / 24 / 30 / 36 / 44 / 52 / 62 / 74 / 86 / 98
+*/
+
+* {
+  --primary-color: #3498db;
+}
+
+body {
+  color: #555; /* Steel Gray */
+  font-family: "Roboto", sans-serif;
+  /* padding-top: 500px; */
+}
+
+.navbar-brand {
+  font-size: 30px;
+}
+
+.nav-link {
+  font-size: 18px !important;
+  font-weight: 500;
+}
+
+.head-section {
+  background-image: linear-gradient(180deg, #c4b6fd, #93acfc);
+}
+
+.navbar-brand,
+.text-primary {
+  color: #0a58ca !important;
+}
+
+.btn-primary {
+  background-color: #0a58ca !important;
+  border: none;
+}
+
+.nav-link:hover {
+  color: #0a58ca;
+}
+
+p {
+  font-size: 18px;
+}
+.btn-primary:hover {
+  background-color: #257dfd !important;
+}
+
+.blue-bg {
+  background-color: #0a58ca;
+  color: #fff;
+}
+
+.ionicons {
+  color: #0a58ca;
+  background-color: #f2f2f2;
+  padding: 10px;
+  height: 30px;
+  width: 30px;
+  margin-bottom: 12px;
+}
+
+.nav-tabs {
+  border: none;
+}
+
+.nav-tabs .active {
+  background-color: #0a58ca !important;
+  border: none;
+  color: #fff !important;
+}
+
+.footer-section {
+  background-color: #0a58ca !important;
+  border: none;
+  color: #fff !important;
+}
+
+.sticky-card {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
+  backdrop-filter: blur(10px); /* Blur effect */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Optional shadow for depth */
+  transition: background-color 0.3s ease, backdrop-filter 0.3s ease;
+}
+
+.navbar-nav .nav-link {
+  color: #000; /* Dark text color for contrast against light background */
+}
+
+.navbar-nav .nav-link:hover {
+  color: #007bff; /* Optional: change color on hover */
+}
+
+
+
+
+.responsive-text {
+  font-size: 6vw; /* Adjust as needed */
+  white-space: nowrap; /* Prevent line breaks */
+}
+@media (min-width: 768px) {
+  .responsive-text {
+    font-size: 4vw; /* Adjust as needed for medium and larger screens */
+  }
+}
+@media (min-width: 1200px) {
+  .responsive-text {
+    font-size: 3vw; /* Adjust as needed for large screens */
+  }
+}

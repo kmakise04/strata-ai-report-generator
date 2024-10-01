@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Email Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 50px;
+    }
+    form {
+      max-width: 400px;
+      margin: auto;
+    }
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: bold;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 20px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+    }
+    button {
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Send an Email</h2>
+  <form id="emailForm">
+    <label for="recipient">Recipient Email:</label>
+    <input type="email" id="recipient" placeholder="Enter recipient email" required>
+
+    <label for="subject">Subject:</label>
+    <input type="text" id="subject" placeholder="Enter subject" required>
+
+    <label for="body">Message:</label>
+    <textarea id="body" rows="5" placeholder="Enter your message" required></textarea>
+
+    <button type="button" id="sendEmail">Send Email</button>
+  </form>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      $('#sendEmail').click(function() {
+        // Get values from the input fields
+        let email = $('#recipient').val();
+        let subject = $('#subject').val();
+        let body = $('#body').val();
+
+        // Ensure none of the fields are empty
+        if (email === "" || subject === "" || body === "") {
+          alert("Please fill out all fields.");
+          return;
+        }
+
+        // Create the mailto link
+        let mailtoLink = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+        // Open the user's default email client
+        window.location.href = mailtoLink;
+      });
+    });
+  </script>
+
+</body>
+</html>

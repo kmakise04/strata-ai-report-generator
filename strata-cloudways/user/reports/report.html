@@ -1,0 +1,1211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap Sidebar with Collapsible List</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/77ec53770a.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../../css/ui.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        @media (min-width: 992px) {
+            #pdfViewerOffcanvas.offcanvas-end {
+                width: 50%;
+            }
+        }
+
+        @media (max-width: 991.98px) {
+            #pdfViewerOffcanvas.offcanvas-end {
+                width: 100%;
+            }
+        }
+
+        .view-pdf {
+            font-size: 10px;
+        }
+    </style>
+</head>
+
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar for large screens -->
+            <div class="d-none d-lg-flex flex-column justify-content-between vh-100 col-lg-3 col-xl-2 sidebar">
+                <div class="row justify-content-start">
+                    <img src="https://oceanswelldigital.com/wp-content/uploads/2024/01/1aa.png" class="w-75 py-3 ps-3"
+                        alt="oceanswelldigital">
+                </div>
+                <nav class="row">
+                    <ul id="ui-nav" class="sidebar-nav">
+
+                    </ul>
+                </nav>
+                <div class="h-25"></div>
+                <div class="row">
+                    <button class="btn btn-primary"><span class="fs-4"><i
+                                class="fa-solid fa-arrow-right-from-bracket me-2 "></i>Logout</span></button>
+                </div>
+            </div>
+
+
+            <div class="col-12 col-lg-9 col-xl-10" id="main">
+                <nav class="navbar bg-body-tertiary">
+                    <div class="container-fluid">
+                        <div class="row justify-content-end w-100">
+                            <div class="d-lg-none col-2">
+                                <button class="btn" type="button" data-bs-toggle="offcanvas"
+                                    data-bs-target="#offcanvasSidebar" aria-controls="offcanvasSidebar">
+                                    <i class="fa-solid fa-chevron-right"></i>
+                                </button>
+                            </div>
+                            <form class="d-flex col-10 col-lg-3" role="search">
+                                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                                <button class="btn btn-outline-success" type="submit">Search</button>
+                            </form>
+                        </div>
+
+                    </div>
+                </nav>
+
+                <div id="results" class="mt-3">
+                    <div class="accordion mt-3" id="formb_information">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button aria-controls="formbtab1" aria-expanded="false"
+                                    class="accordion-button collapsed" data-bs-target="#formbtab1"
+                                    data-bs-toggle="collapse" type="button">
+                                    Form B
+                                </button>
+                            </h2>
+                            <div class="accordion-collapse collapse" data-bs-parent="#formb_information" id="formbtab1">
+                                <div class="accordion-body">
+                                    <button class="btn btn-primary mb-3 openAll float-end" type="button">Open
+                                        All</button>
+                                    <button class="btn btn-primary mb-3 closeAll float-end" style="display:none;"
+                                        type="button">Close
+                                        All</button>
+                                    <div class="accordion accordion-flush" id="formb_questions">
+                                        <!-- Form B Questions -->
+                                        <div class="accordion-item" id="StrataLotNumber">
+                                            <h2 class="accordion-header">
+                                                <button aria-controls="StrataLotNumbercollapse" aria-expanded="false"
+                                                    class="accordion-button collapsed mt-3"
+                                                    data-bs-target="#StrataLotNumbercollapse" data-bs-toggle="collapse"
+                                                    type="button">
+                                                    What is the strata lot number?
+                                                </button>
+                                            </h2>
+                                            <div class="accordion-collapse collapse multi-collapse"
+                                                id="StrataLotNumbercollapse">
+                                                <div class="accordion-body p-2 py-3">
+                                                    <div class="card mb-3">
+                                                        <div class="card-header py-3">Answer:</div>
+                                                        <div class="card-body p-0 m-0">
+                                                            <p class="card-text p-2 px-lg-5" id="StrataLotNumberAnswer"
+                                                                contenteditable="false"></p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card mb-3">
+                                                        <div class="card-header py-3">Source:</div>
+                                                        <div class="card-body p-0 m-0">
+                                                            <p class="card-text p-2 px-lg-5" id="StrataLotNumberSource"
+                                                                contenteditable="false"></p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="accordion-item" id="StrataPlanNumber">
+                                            <h2 class="accordion-header">
+                                                <button aria-controls="StrataPlanNumbercollapse" aria-expanded="false"
+                                                    class="accordion-button collapsed mt-3"
+                                                    data-bs-target="#StrataPlanNumbercollapse" data-bs-toggle="collapse"
+                                                    type="button">
+                                                    What is the strata plan number?
+                                                </button>
+                                            </h2>
+                                            <div class="accordion-collapse collapse multi-collapse"
+                                                id="StrataPlanNumbercollapse">
+                                                <div class="accordion-body p-2 py-3">
+                                                    <div class="card mb-3">
+                                                        <div class="card-header py-3">Answer:</div>
+                                                        <div class="card-body p-0 m-0">
+                                                            <p class="card-text p-2 px-lg-5" id="StrataPlanNumberAnswer"
+                                                                contenteditable="false"></p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card mb-3">
+                                                        <div class="card-header py-3">Source:</div>
+                                                        <div class="card-body p-0 m-0">
+                                                            <p class="card-text p-2 px-lg-5" id="StrataPlanNumberSource"
+                                                                contenteditable="false"></p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="accordion-item" id="MonthlyFees">
+                                            <h2 class="accordion-header">
+                                                <button aria-controls="MonthlyFeescollapse" aria-expanded="false"
+                                                    class="accordion-button collapsed mt-3"
+                                                    data-bs-target="#MonthlyFeescollapse" data-bs-toggle="collapse"
+                                                    type="button">
+                                                    What are the monthly strata fees payable by the owner of the strata
+                                                    lot described above?
+                                                </button>
+                                            </h2>
+                                            <div class="accordion-collapse collapse multi-collapse"
+                                                id="MonthlyFeescollapse">
+                                                <div class="accordion-body p-2 py-3">
+                                                    <div class="card mb-3">
+                                                        <div class="card-header py-3">Answer:</div>
+                                                        <div class="card-body p-0 m-0">
+                                                            <p class="card-text p-2 px-lg-5" id="MonthlyFeesAnswer"
+                                                                contenteditable="false"></p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card mb-3">
+                                                        <div class="card-header py-3">Source:</div>
+                                                        <div class="card-body p-0 m-0">
+                                                            <p class="card-text p-2 px-lg-5" id="MonthlyFeesSource"
+                                                                contenteditable="false"></p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="accordion-item" id="OwingAmount">
+                                            <h2 class="accordion-header">
+                                                <button aria-controls="OwingAmountcollapse" aria-expanded="false"
+                                                    class="accordion-button collapsed mt-3"
+                                                    data-bs-target="#OwingAmountcollapse" data-bs-toggle="collapse"
+                                                    type="button">
+                                                    Are there any amount owing to the strata corporation by the owner of
+                                                    the strata lot described above?
+                                                </button>
+                                            </h2>
+                                            <div class="accordion-collapse collapse multi-collapse"
+                                                id="OwingAmountcollapse">
+                                                <div class="accordion-body p-2 py-3">
+                                                    <div class="card mb-3">
+                                                        <div class="card-header py-3">Answer:</div>
+                                                        <div class="card-body p-0 m-0">
+                                                            <p class="card-text p-2 px-lg-5" id="OwingAmountAnswer"
+                                                                contenteditable="false"></p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card mb-3">
+                                                        <div class="card-header py-3">Source:</div>
+                                                        <div class="card-body p-0 m-0">
+                                                            <p class="card-text p-2 px-lg-5" id="OwingAmountSource"
+                                                                contenteditable="false"></p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="accordion-item" id="Alterations">
+                                            <h2 class="accordion-header">
+                                                <button aria-controls="Alterationscollapse" aria-expanded="false"
+                                                    class="accordion-button collapsed mt-3"
+                                                    data-bs-target="#Alterationscollapse" data-bs-toggle="collapse"
+                                                    type="button">
+                                                    Are there any agreements under which the owner of the strata lot
+                                                    described above takes responsibility for expenses relating to
+                                                    alterations to the strata lot, the common property or the common
+                                                    assets?
+                                                </button>
+                                            </h2>
+                                            <div class="accordion-collapse collapse multi-collapse"
+                                                id="Alterationscollapse">
+                                                <div class="accordion-body p-2 py-3">
+                                                    <div class="card mb-3">
+                                                        <div class="card-header py-3">Answer:</div>
+                                                        <div class="card-body p-0 m-0">
+                                                            <p class="card-text p-2 px-lg-5" id="AlterationsAnswer"
+                                                                contenteditable="false"></p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card mb-3">
+                                                        <div class="card-header py-3">Source:</div>
+                                                        <div class="card-body p-0 m-0">
+                                                            <p class="card-text p-2 px-lg-5" id="AlterationsSource"
+                                                                contenteditable="false"></p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="accordion-item" id="SpecialLevy">
+                                            <h2 class="accordion-header">
+                                                <button aria-controls="SpecialLevycollapse" aria-expanded="false"
+                                                    class="accordion-button collapsed mt-3"
+                                                    data-bs-target="#SpecialLevycollapse" data-bs-toggle="collapse"
+                                                    type="button">
+                                                    Are there any amount that the owner of the strata lot described
+                                                    above is obligated
+                                                    to pay in the future for a special levy that has already been
+                                                    approved?
+                                                </button>
+                                            </h2>
+                                            <div class="accordion-collapse collapse multi-collapse"
+                                                id="SpecialLevycollapse">
+                                                <div class="accordion-body p-2 py-3">
+                                                    <div class="card mb-3">
+                                                        <div class="card-header py-3">Answer:</div>
+                                                        <div class="card-body p-0 m-0">
+                                                            <p class="card-text p-2 px-lg-5" id="SpecialLevyAnswer"
+                                                                contenteditable="false"></p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card mb-3">
+                                                        <div class="card-header py-3">Source:</div>
+                                                        <div class="card-body p-0 m-0">
+                                                            <p class="card-text p-2 px-lg-5" id="SpecialLevySource"
+                                                                contenteditable="false"></p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="accordion-item" id="ExcessExpenses">
+                                            <h2 class="accordion-header">
+                                                <button aria-controls="ExcessExpensescollapse" aria-expanded="false"
+                                                    class="accordion-button collapsed mt-3"
+                                                    data-bs-target="#ExcessExpensescollapse" data-bs-toggle="collapse"
+                                                    type="button">
+                                                    Is there any amount by which the expenses of the strata corporation
+                                                    for the current
+                                                    fiscal year are expected to exceed the expenses budgeted for the
+                                                    fiscal year?
+                                                </button>
+                                            </h2>
+                                            <div class="accordion-collapse collapse multi-collapse"
+                                                id="ExcessExpensescollapse">
+                                                <div class="accordion-body p-2 py-3">
+                                                    <div class="card mb-3">
+                                                        <div class="card-header py-3">Answer:</div>
+                                                        <div class="card-body p-0 m-0">
+                                                            <p class="card-text p-2 px-lg-5" id="ExcessExpensesAnswer"
+                                                                contenteditable="false"></p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card mb-3">
+                                                        <div class="card-header py-3">Source:</div>
+                                                        <div class="card-body p-0 m-0">
+                                                            <p class="card-text p-2 px-lg-5" id="ExcessExpensesSource"
+                                                                contenteditable="false"></p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="accordion-item" id="ReserveFund">
+                                            <h2 class="accordion-header">
+                                                <button aria-controls="ReserveFundcollapse" aria-expanded="false"
+                                                    class="accordion-button collapsed mt-3"
+                                                    data-bs-target="#ReserveFundcollapse" data-bs-toggle="collapse"
+                                                    type="button">
+                                                    What is the amount in the contingency reserve fund minus any
+                                                    expenditures which have
+                                                    already been approved but not yet taken from the fund?
+                                                </button>
+                                            </h2>
+                                            <div class="accordion-collapse collapse multi-collapse"
+                                                id="ReserveFundcollapse">
+                                                <div class="accordion-body p-2 py-3">
+                                                    <div class="card mb-3">
+                                                        <div class="card-header py-3">Answer:</div>
+                                                        <div class="card-body p-0 m-0">
+                                                            <p class="card-text p-2 px-lg-5" id="ReserveFundAnswer"
+                                                                contenteditable="false"></p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card mb-3">
+                                                        <div class="card-header py-3">Source:</div>
+                                                        <div class="card-body p-0 m-0">
+                                                            <p class="card-text p-2 px-lg-5" id="ReserveFundSource"
+                                                                contenteditable="false"></p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="accordion-item" id="UnfiledBylaws">
+                                            <h2 class="accordion-header">
+                                                <button aria-controls="UnfiledBylawscollapse" aria-expanded="false"
+                                                    class="accordion-button collapsed mt-3"
+                                                    data-bs-target="#UnfiledBylawscollapse" data-bs-toggle="collapse"
+                                                    type="button">
+                                                    Are there any amendments to the bylaws that are not yet filed in the
+                                                    land title
+                                                    office?
+                                                </button>
+                                            </h2>
+                                            <div class="accordion-collapse collapse multi-collapse"
+                                                id="UnfiledBylawscollapse">
+                                                <div class="accordion-body p-2 py-3">
+                                                    <div class="card mb-3">
+                                                        <div class="card-header py-3">Answer:</div>
+                                                        <div class="card-body p-0 m-0">
+                                                            <p class="card-text p-2 px-lg-5" id="UnfiledBylawsAnswer"
+                                                                contenteditable="false"></p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card mb-3">
+                                                        <div class="card-header py-3">Source:</div>
+                                                        <div class="card-body p-0 m-0">
+                                                            <p class="card-text p-2 px-lg-5" id="UnfiledBylawsSource"
+                                                                contenteditable="false"></p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="accordion-item" id="UnfiledResolutions">
+                                            <h2 class="accordion-header">
+                                                <button aria-controls="UnfiledResolutionscollapse" aria-expanded="false"
+                                                    class="accordion-button collapsed mt-3"
+                                                    data-bs-target="#UnfiledResolutionscollapse"
+                                                    data-bs-toggle="collapse" type="button">
+                                                    Are there any resolutions passed by a 3/4 vote or unanimous vote
+                                                    that are required
+                                                    to be filed in the land title office but that have not yet been
+                                                    filed in the land
+                                                    title office?
+                                                </button>
+                                            </h2>
+                                            <div class="accordion-collapse collapse multi-collapse"
+                                                id="UnfiledResolutionscollapse">
+                                                <div class="accordion-body p-2 py-3">
+                                                    <div class="card mb-3">
+                                                        <div class="card-header py-3">Answer:</div>
+                                                        <div class="card-body p-0 m-0">
+                                                            <p class="card-text p-2 px-lg-5"
+                                                                id="UnfiledResolutionsAnswer" contenteditable="false">
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card mb-3">
+                                                        <div class="card-header py-3">Source:</div>
+                                                        <div class="card-body p-0 m-0">
+                                                            <p class="card-text p-2 px-lg-5"
+                                                                id="UnfiledResolutionsSource" contenteditable="false">
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="accordion-item" id="WindingUp">
+                                            <h2 class="accordion-header">
+                                                <button aria-controls="WindingUpcollapse" aria-expanded="false"
+                                                    class="accordion-button collapsed mt-3"
+                                                    data-bs-target="#WindingUpcollapse" data-bs-toggle="collapse"
+                                                    type="button">
+                                                    Are there any winding-up resolutions that have been passed?
+                                                </button>
+                                            </h2>
+                                            <div class="accordion-collapse collapse multi-collapse"
+                                                id="WindingUpcollapse">
+                                                <div class="accordion-body p-2 py-3">
+                                                    <div class="card mb-3">
+                                                        <div class="card-header py-3">Answer:</div>
+                                                        <div class="card-body p-0 m-0">
+                                                            <p class="card-text p-2 px-lg-5" id="WindingUpAnswer"
+                                                                contenteditable="false"></p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card mb-3">
+                                                        <div class="card-header py-3">Source:</div>
+                                                        <div class="card-body p-0 m-0">
+                                                            <p class="card-text p-2 px-lg-5" id="WindingUpSource"
+                                                                contenteditable="false"></p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="accordion-item" id="PendingResolutions">
+                                            <h2 class="accordion-header">
+                                                <button aria-controls="PendingResolutionscollapse" aria-expanded="false"
+                                                    class="accordion-button collapsed mt-3"
+                                                    data-bs-target="#PendingResolutionscollapse"
+                                                    data-bs-toggle="collapse" type="button">
+                                                    Has notice been given for any resolutions, requiring a 3/4 vote, 80%
+                                                    vote or
+                                                    unanimous vote or dealing with an amendment to the bylaws, that have
+                                                    not yet been
+                                                    voted on?
+                                                </button>
+                                            </h2>
+                                            <div class="accordion-collapse collapse multi-collapse"
+                                                id="PendingResolutionscollapse">
+                                                <div class="accordion-body p-2 py-3">
+                                                    <div class="card mb-3">
+                                                        <div class="card-header py-3">Answer:</div>
+                                                        <div class="card-body p-0 m-0">
+                                                            <p class="card-text p-2 px-lg-5"
+                                                                id="PendingResolutionsAnswer" contenteditable="false">
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card mb-3">
+                                                        <div class="card-header py-3">Source:</div>
+                                                        <div class="card-body p-0 m-0">
+                                                            <p class="card-text p-2 px-lg-5"
+                                                                id="PendingResolutionsSource" contenteditable="false">
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="accordion-item" id="LegalProceedings">
+                                            <h2 class="accordion-header">
+                                                <button aria-controls="LegalProceedingscollapse" aria-expanded="false"
+                                                    class="accordion-button collapsed mt-3"
+                                                    data-bs-target="#LegalProceedingscollapse" data-bs-toggle="collapse"
+                                                    type="button">
+                                                    Is the strata corporation party to any court proceeding, arbitration
+                                                    or tribunal
+                                                    proceeding, and/or are there any judgments or orders against the
+                                                    strata corporation?
+                                                </button>
+                                            </h2>
+                                            <div class="accordion-collapse collapse multi-collapse"
+                                                id="LegalProceedingscollapse">
+                                                <div class="accordion-body p-2 py-3">
+                                                    <div class="card mb-3">
+                                                        <div class="card-header py-3">Answer:</div>
+                                                        <div class="card-body p-0 m-0">
+                                                            <p class="card-text p-2 px-lg-5" id="LegalProceedingsAnswer"
+                                                                contenteditable="false"></p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card mb-3">
+                                                        <div class="card-header py-3">Source:</div>
+                                                        <div class="card-body p-0 m-0">
+                                                            <p class="card-text p-2 px-lg-5" id="LegalProceedingsSource"
+                                                                contenteditable="false"></p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="accordion-item" id="OutstandingOrders">
+                                            <h2 class="accordion-header">
+                                                <button aria-controls="OutstandingOrderscollapse" aria-expanded="false"
+                                                    class="accordion-button collapsed mt-3"
+                                                    data-bs-target="#OutstandingOrderscollapse"
+                                                    data-bs-toggle="collapse" type="button">
+                                                    Have any notices or work orders been received by the strata
+                                                    corporation that remain
+                                                    outstanding for the strata lot, the common property or the common
+                                                    assets?
+                                                </button>
+                                            </h2>
+                                            <div class="accordion-collapse collapse multi-collapse"
+                                                id="OutstandingOrderscollapse">
+                                                <div class="accordion-body p-2 py-3">
+                                                    <div class="card mb-3">
+                                                        <div class="card-header py-3">Answer:</div>
+                                                        <div class="card-body p-0 m-0">
+                                                            <p class="card-text p-2 px-lg-5"
+                                                                id="OutstandingOrdersAnswer" contenteditable="false">
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card mb-3">
+                                                        <div class="card-header py-3">Source:</div>
+                                                        <div class="card-body p-0 m-0">
+                                                            <p class="card-text p-2 px-lg-5"
+                                                                id="OutstandingOrdersSource" contenteditable="false">
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="accordion-item" id="ParkingStalls">
+                                            <h2 class="accordion-header">
+                                                <button aria-controls="ParkingStallscollapse" aria-expanded="false"
+                                                    class="accordion-button collapsed mt-3"
+                                                    data-bs-target="#ParkingStallscollapse" data-bs-toggle="collapse"
+                                                    type="button">
+                                                    Are there any parking stall(s) allocated to the strata lot?
+                                                </button>
+                                            </h2>
+                                            <div class="accordion-collapse collapse multi-collapse"
+                                                id="ParkingStallscollapse">
+                                                <div class="accordion-body p-2 py-3">
+                                                    <div class="card mb-3">
+                                                        <div class="card-header py-3">Answer:</div>
+                                                        <div class="card-body p-0 m-0">
+                                                            <p class="card-text p-2 px-lg-5" id="ParkingStallsAnswer"
+                                                                contenteditable="false"></p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card mb-3">
+                                                        <div class="card-header py-3">Source:</div>
+                                                        <div class="card-body p-0 m-0">
+                                                            <p class="card-text p-2 px-lg-5" id="ParkingStallsSource"
+                                                                contenteditable="false"></p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="accordion-item" id="ParkingType">
+                                            <h2 class="accordion-header">
+                                                <button aria-controls="ParkingTypecollapse" aria-expanded="false"
+                                                    class="accordion-button collapsed mt-3"
+                                                    data-bs-target="#ParkingTypecollapse" data-bs-toggle="collapse"
+                                                    type="button">
+                                                    Is the parking common property, limited common property, part of the
+                                                    strata lot, or
+                                                    a separate strata lot?
+                                                </button>
+                                            </h2>
+                                            <div class="accordion-collapse collapse multi-collapse"
+                                                id="ParkingTypecollapse">
+                                                <div class="accordion-body p-2 py-3">
+                                                    <div class="card mb-3">
+                                                        <div class="card-header py-3">Answer:</div>
+                                                        <div class="card-body p-0 m-0">
+                                                            <p class="card-text p-2 px-lg-5" id="ParkingTypeAnswer"
+                                                                contenteditable="false"></p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card mb-3">
+                                                        <div class="card-header py-3">Source:</div>
+                                                        <div class="card-body p-0 m-0">
+                                                            <p class="card-text p-2 px-lg-5" id="ParkingTypeSource"
+                                                                contenteditable="false"></p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="accordion-item" id="StorageLockers">
+                                            <h2 class="accordion-header">
+                                                <button aria-controls="StorageLockerscollapse" aria-expanded="false"
+                                                    class="accordion-button collapsed mt-3"
+                                                    data-bs-target="#StorageLockerscollapse" data-bs-toggle="collapse"
+                                                    type="button">
+                                                    Are there any storage locker(s) allocated to the strata lot?
+                                                </button>
+                                            </h2>
+                                            <div class="accordion-collapse collapse multi-collapse"
+                                                id="StorageLockerscollapse">
+                                                <div class="accordion-body p-2 py-3">
+                                                    <div class="card mb-3">
+                                                        <div class="card-header py-3">Answer:</div>
+                                                        <div class="card-body p-0 m-0">
+                                                            <p class="card-text p-2 px-lg-5" id="StorageLockersAnswer"
+                                                                contenteditable="false"></p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card mb-3">
+                                                        <div class="card-header py-3">Source:</div>
+                                                        <div class="card-body p-0 m-0">
+                                                            <p class="card-text p-2 px-lg-5" id="StorageLockersSource"
+                                                                contenteditable="false"></p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="accordion-item" id="StorageType">
+                                            <h2 class="accordion-header">
+                                                <button aria-controls="StorageTypecollapse" aria-expanded="false"
+                                                    class="accordion-button collapsed mt-3"
+                                                    data-bs-target="#StorageTypecollapse" data-bs-toggle="collapse"
+                                                    type="button">
+                                                    Is the storage common property, limited common property, part of the
+                                                    strata lot, or
+                                                    a separate strata lot? If common property, is the storage allocated
+                                                    with council
+                                                    approval, council approval and rented, or by owner developer
+                                                    assignment?
+                                                </button>
+                                            </h2>
+                                            <div class="accordion-collapse collapse multi-collapse"
+                                                id="StorageTypecollapse">
+                                                <div class="accordion-body p-2 py-3">
+                                                    <div class="card mb-3">
+                                                        <div class="card-header py-3">Answer:</div>
+                                                        <div class="card-body p-0 m-0">
+                                                            <p class="card-text p-2 px-lg-5" id="StorageTypeAnswer"
+                                                                contenteditable="false"></p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card mb-3">
+                                                        <div class="card-header py-3">Source:</div>
+                                                        <div class="card-body p-0 m-0">
+                                                            <p class="card-text p-2 px-lg-5" id="StorageTypeSource"
+                                                                contenteditable="false"></p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="accordion-item" id="ElectricalReports">
+                                            <h2 class="accordion-header">
+                                                <button aria-controls="ElectricalReportscollapse" aria-expanded="false"
+                                                    class="accordion-button collapsed mt-3"
+                                                    data-bs-target="#ElectricalReportscollapse"
+                                                    data-bs-toggle="collapse" type="button">
+                                                    Has the strata corporation obtained any electrical planning reports
+                                                    under section
+                                                    94.1 of the Strata Property Act?
+                                                </button>
+                                            </h2>
+                                            <div class="accordion-collapse collapse multi-collapse"
+                                                id="ElectricalReportscollapse">
+                                                <div class="accordion-body p-2 py-3">
+                                                    <div class="card mb-3">
+                                                        <div class="card-header py-3">Answer:</div>
+                                                        <div class="card-body p-0 m-0">
+                                                            <p class="card-text p-2 px-lg-5"
+                                                                id="ElectricalReportsAnswer" contenteditable="false">
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card mb-3">
+                                                        <div class="card-header py-3">Source:</div>
+                                                        <div class="card-body p-0 m-0">
+                                                            <p class="card-text p-2 px-lg-5"
+                                                                id="ElectricalReportsSource" contenteditable="false">
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="accordion-item" id="ManagementCompany">
+                                            <h2 class="accordion-header">
+                                                <button aria-controls="ManagementCompanycollapse" aria-expanded="false"
+                                                    class="accordion-button collapsed mt-3"
+                                                    data-bs-target="#ManagementCompanycollapse"
+                                                    data-bs-toggle="collapse" type="button">
+                                                    Who is the management company?
+                                                </button>
+                                            </h2>
+                                            <div class="accordion-collapse collapse multi-collapse"
+                                                id="ManagementCompanycollapse">
+                                                <div class="accordion-body p-2 py-3">
+                                                    <div class="card mb-3">
+                                                        <div class="card-header py-3">Answer:</div>
+                                                        <div class="card-body p-0 m-0">
+                                                            <p class="card-text p-2 px-lg-5"
+                                                                id="ManagementCompanyAnswer" contenteditable="false">
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card mb-3">
+                                                        <div class="card-header py-3">Source:</div>
+                                                        <div class="card-body p-0 m-0">
+                                                            <p class="card-text p-2 px-lg-5"
+                                                                id="ManagementCompanySource" contenteditable="false">
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="accordion-item" id="FormBDate">
+                                            <h2 class="accordion-header">
+                                                <button aria-controls="FormBDatecollapse" aria-expanded="false"
+                                                    class="accordion-button collapsed mt-3"
+                                                    data-bs-target="#FormBDatecollapse" data-bs-toggle="collapse"
+                                                    type="button">
+                                                    What date was the Form B signed?
+                                                </button>
+                                            </h2>
+                                            <div class="accordion-collapse collapse multi-collapse"
+                                                id="FormBDatecollapse">
+                                                <div class="accordion-body p-2 py-3">
+                                                    <div class="card mb-3">
+                                                        <div class="card-header py-3">Answer:</div>
+                                                        <div class="card-body p-0 m-0">
+                                                            <p class="card-text p-2 px-lg-5" id="FormBDateAnswer"
+                                                                contenteditable="false"></p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card mb-3">
+                                                        <div class="card-header py-3">Source:</div>
+                                                        <div class="card-body p-0 m-0">
+                                                            <p class="card-text p-2 px-lg-5" id="FormBDateSource"
+                                                                contenteditable="false"></p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- End Form B Questions -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion mt-3" id="bylaws_information">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button aria-controls="bylawstab1" aria-expanded="false"
+                                    class="accordion-button collapsed" data-bs-target="#bylawstab1"
+                                    data-bs-toggle="collapse" type="button">
+                                    Bylaws
+                                </button>
+                            </h2>
+                            <div class="accordion-collapse collapse" data-bs-parent="#bylaws_information"
+                                id="bylawstab1">
+                                <div class="accordion-body">
+                                    <button class="btn btn-primary mb-3 openAll float-end" type="button">Open
+                                        All</button>
+                                    <button class="btn btn-primary mb-3 closeAll float-end" style="display:none;"
+                                        type="button">Close
+                                        All</button>
+                                    <div class="accordion accordion-flush" id="bylaws_questions">
+                                        <!-- Bylaws Questions -->
+                                        <div class="accordion-item" id="PetsTypeNumber">
+                                            <h2 class="accordion-header">
+                                                <button aria-controls="PetsTypeNumbercollapse" aria-expanded="false"
+                                                    class="accordion-button collapsed mt-3"
+                                                    data-bs-target="#PetsTypeNumbercollapse" data-bs-toggle="collapse"
+                                                    type="button">
+                                                    What type of pets and how many are permitted?
+                                                </button>
+                                            </h2>
+                                            <div class="accordion-collapse collapse multi-collapse"
+                                                id="PetsTypeNumbercollapse">
+                                                <div class="accordion-body p-2 py-3">
+                                                    <div class="card mb-3">
+                                                        <div class="card-header py-3">Answer:</div>
+                                                        <div class="card-body p-0 m-0">
+                                                            <p class="card-text p-2 px-lg-5" id="PetsTypeNumberAnswer"
+                                                                contenteditable="false"></p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card mb-3">
+                                                        <div class="card-header py-3">Source:</div>
+                                                        <div class="card-body p-0 m-0">
+                                                            <p class="card-text p-2 px-lg-5" id="PetsTypeNumberSource"
+                                                                contenteditable="false"></p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="accordion-item" id="PetSizeRestrictions">
+                                            <h2 class="accordion-header">
+                                                <button aria-controls="PetSizeRestrictionscollapse"
+                                                    aria-expanded="false" class="accordion-button collapsed mt-3"
+                                                    data-bs-target="#PetSizeRestrictionscollapse"
+                                                    data-bs-toggle="collapse" type="button">
+                                                    Is there a size restriction for pets?
+                                                </button>
+                                            </h2>
+                                            <div class="accordion-collapse collapse multi-collapse"
+                                                id="PetSizeRestrictionscollapse">
+                                                <div class="accordion-body p-2 py-3">
+                                                    <div class="card mb-3">
+                                                        <div class="card-header py-3">Answer:</div>
+                                                        <div class="card-body p-0 m-0">
+                                                            <p class="card-text p-2 px-lg-5"
+                                                                id="PetSizeRestrictionsAnswer" contenteditable="false">
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card mb-3">
+                                                        <div class="card-header py-3">Source:</div>
+                                                        <div class="card-body p-0 m-0">
+                                                            <p class="card-text p-2 px-lg-5"
+                                                                id="PetSizeRestrictionsSource" contenteditable="false">
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="accordion-item" id="DangerousPets">
+                                            <h2 class="accordion-header">
+                                                <button aria-controls="DangerousPetscollapse" aria-expanded="false"
+                                                    class="accordion-button collapsed mt-3"
+                                                    data-bs-target="#DangerousPetscollapse" data-bs-toggle="collapse"
+                                                    type="button">
+                                                    Are there any bylaws related to vicious or dangerous pets/dogs?
+                                                </button>
+                                            </h2>
+                                            <div class="accordion-collapse collapse multi-collapse"
+                                                id="DangerousPetscollapse">
+                                                <div class="accordion-body p-2 py-3">
+                                                    <div class="card mb-3">
+                                                        <div class="card-header py-3">Answer:</div>
+                                                        <div class="card-body p-0 m-0">
+                                                            <p class="card-text p-2 px-lg-5" id="DangerousPetsAnswer"
+                                                                contenteditable="false"></p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card mb-3">
+                                                        <div class="card-header py-3">Source:</div>
+                                                        <div class="card-body p-0 m-0">
+                                                            <p class="card-text p-2 px-lg-5" id="DangerousPetsSource"
+                                                                contenteditable="false"></p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="accordion-item" id="SmokingBylaws">
+                                            <h2 class="accordion-header">
+                                                <button aria-controls="SmokingBylawscollapse" aria-expanded="false"
+                                                    class="accordion-button collapsed mt-3"
+                                                    data-bs-target="#SmokingBylawscollapse" data-bs-toggle="collapse"
+                                                    type="button">
+                                                    Are there any bylaws related to smoking tobacco or marijuana?
+                                                </button>
+                                            </h2>
+                                            <div class="accordion-collapse collapse multi-collapse"
+                                                id="SmokingBylawscollapse">
+                                                <div class="accordion-body p-2 py-3">
+                                                    <div class="card mb-3">
+                                                        <div class="card-header py-3">Answer:</div>
+                                                        <div class="card-body p-0 m-0">
+                                                            <p class="card-text p-2 px-lg-5" id="SmokingBylawsAnswer"
+                                                                contenteditable="false"></p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card mb-3">
+                                                        <div class="card-header py-3">Source:</div>
+                                                        <div class="card-body p-0 m-0">
+                                                            <p class="card-text p-2 px-lg-5" id="SmokingBylawsSource"
+                                                                contenteditable="false"></p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="accordion-item" id="RentalRestrictions">
+                                            <h2 class="accordion-header">
+                                                <button aria-controls="RentalRestrictionscollapse" aria-expanded="false"
+                                                    class="accordion-button collapsed mt-3"
+                                                    data-bs-target="#RentalRestrictionscollapse"
+                                                    data-bs-toggle="collapse" type="button">
+                                                    Are there any rental restriction bylaws?
+                                                </button>
+                                            </h2>
+                                            <div class="accordion-collapse collapse multi-collapse"
+                                                id="RentalRestrictionscollapse">
+                                                <div class="accordion-body p-2 py-3">
+                                                    <div class="card mb-3">
+                                                        <div class="card-header py-3">Answer:</div>
+                                                        <div class="card-body p-0 m-0">
+                                                            <p class="card-text p-2 px-lg-5"
+                                                                id="RentalRestrictionsAnswer" contenteditable="false">
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card mb-3">
+                                                        <div class="card-header py-3">Source:</div>
+                                                        <div class="card-body p-0 m-0">
+                                                            <p class="card-text p-2 px-lg-5"
+                                                                id="RentalRestrictionsSource" contenteditable="false">
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="accordion-item" id="BBQBylaws">
+                                            <h2 class="accordion-header">
+                                                <button aria-controls="BBQBylawscollapse" aria-expanded="false"
+                                                    class="accordion-button collapsed mt-3"
+                                                    data-bs-target="#BBQBylawscollapse" data-bs-toggle="collapse"
+                                                    type="button">
+                                                    Are there any bylaws related to barbecues?
+                                                </button>
+                                            </h2>
+                                            <div class="accordion-collapse collapse multi-collapse"
+                                                id="BBQBylawscollapse">
+                                                <div class="accordion-body p-2 py-3">
+                                                    <div class="card mb-3">
+                                                        <div class="card-header py-3">Answer:</div>
+                                                        <div class="card-body p-0 m-0">
+                                                            <p class="card-text p-2 px-lg-5" id="BBQBylawsAnswer"
+                                                                contenteditable="false"></p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card mb-3">
+                                                        <div class="card-header py-3">Source:</div>
+                                                        <div class="card-body p-0 m-0">
+                                                            <p class="card-text p-2 px-lg-5" id="BBQBylawsSource"
+                                                                contenteditable="false"></p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="accordion-item" id="MovingFees">
+                                            <h2 class="accordion-header">
+                                                <button aria-controls="MovingFeescollapse" aria-expanded="false"
+                                                    class="accordion-button collapsed mt-3"
+                                                    data-bs-target="#MovingFeescollapse" data-bs-toggle="collapse"
+                                                    type="button">
+                                                    Are there any fees related to moving in or out of the building?
+                                                </button>
+                                            </h2>
+                                            <div class="accordion-collapse collapse multi-collapse"
+                                                id="MovingFeescollapse">
+                                                <div class="accordion-body p-2 py-3">
+                                                    <div class="card mb-3">
+                                                        <div class="card-header py-3">Answer:</div>
+                                                        <div class="card-body p-0 m-0">
+                                                            <p class="card-text p-2 px-lg-5" id="MovingFeesAnswer"
+                                                                contenteditable="false"></p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card mb-3">
+                                                        <div class="card-header py-3">Source:</div>
+                                                        <div class="card-body p-0 m-0">
+                                                            <p class="card-text p-2 px-lg-5" id="MovingFeesSource"
+                                                                contenteditable="false"></p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="accordion-item" id="ACBylaws">
+                                            <h2 class="accordion-header">
+                                                <button aria-controls="ACBylawscollapse" aria-expanded="false"
+                                                    class="accordion-button collapsed mt-3"
+                                                    data-bs-target="#ACBylawscollapse" data-bs-toggle="collapse"
+                                                    type="button">
+                                                    Are there any bylaws related to installing air conditioning?
+                                                </button>
+                                            </h2>
+                                            <div class="accordion-collapse collapse multi-collapse"
+                                                id="ACBylawscollapse">
+                                                <div class="accordion-body p-2 py-3">
+                                                    <div class="card mb-3">
+                                                        <div class="card-header py-3">Answer:</div>
+                                                        <div class="card-body p-0 m-0">
+                                                            <p class="card-text p-2 px-lg-5" id="ACBylawsAnswer"
+                                                                contenteditable="false">
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card mb-3">
+                                                        <div class="card-header py-3">Source:</div>
+                                                        <div class="card-body p-0 m-0">
+                                                            <p class="card-text p-2 px-lg-5" id="ACBylawsSource"
+                                                                contenteditable="false">
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="accordion-item" id="AgeRestrictions">
+                                            <h2 class="accordion-header">
+                                                <button aria-controls="AgeRestrictionscollapse" aria-expanded="false"
+                                                    class="accordion-button collapsed mt-3"
+                                                    data-bs-target="#AgeRestrictionscollapse" data-bs-toggle="collapse"
+                                                    type="button">
+                                                    Are there any age restrictions?
+                                                </button>
+                                            </h2>
+                                            <div class="accordion-collapse collapse multi-collapse"
+                                                id="AgeRestrictionscollapse">
+                                                <div class="accordion-body p-2 py-3">
+                                                    <div class="card mb-3">
+                                                        <div class="card-header py-3">Answer:</div>
+                                                        <div class="card-body p-0 m-0">
+                                                            <p class="card-text p-2 px-lg-5" id="AgeRestrictionsAnswer"
+                                                                contenteditable="false"></p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card mb-3">
+                                                        <div class="card-header py-3">Source:</div>
+                                                        <div class="card-body p-0 m-0">
+                                                            <p class="card-text p-2 px-lg-5" id="AgeRestrictionsSource"
+                                                                contenteditable="false"></p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="accordion-item" id="OccupancyBylaws">
+                                            <h2 class="accordion-header">
+                                                <button aria-controls="OccupancyBylawscollapse" aria-expanded="false"
+                                                    class="accordion-button collapsed mt-3"
+                                                    data-bs-target="#OccupancyBylawscollapse" data-bs-toggle="collapse"
+                                                    type="button">
+                                                    Are there any bylaws related to the maximum number of occupants
+                                                    allowed within a
+                                                    strata lot?
+                                                </button>
+                                            </h2>
+                                            <div class="accordion-collapse collapse multi-collapse"
+                                                id="OccupancyBylawscollapse">
+                                                <div class="accordion-body p-2 py-3">
+                                                    <div class="card mb-3">
+                                                        <div class="card-header py-3">Answer:</div>
+                                                        <div class="card-body p-0 m-0">
+                                                            <p class="card-text p-2 px-lg-5" id="OccupancyBylawsAnswer"
+                                                                contenteditable="false"></p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card mb-3">
+                                                        <div class="card-header py-3">Source:</div>
+                                                        <div class="card-body p-0 m-0">
+                                                            <p class="card-text p-2 px-lg-5" id="OccupancyBylawsSource"
+                                                                contenteditable="false"></p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="accordion-item" id="FlooringBylaws">
+                                            <h2 class="accordion-header">
+                                                <button aria-controls="FlooringBylawscollapse" aria-expanded="false"
+                                                    class="accordion-button collapsed mt-3"
+                                                    data-bs-target="#FlooringBylawscollapse" data-bs-toggle="collapse"
+                                                    type="button">
+                                                    Are there any bylaws related to changing, or installing hard
+                                                    surface, flooring?
+                                                </button>
+                                            </h2>
+                                            <div class="accordion-collapse collapse multi-collapse"
+                                                id="FlooringBylawscollapse">
+                                                <div class="accordion-body p-2 py-3">
+                                                    <div class="card mb-3">
+                                                        <div class="card-header py-3">Answer:</div>
+                                                        <div class="card-body p-0 m-0">
+                                                            <p class="card-text p-2 px-lg-5" id="FlooringBylawsAnswer"
+                                                                contenteditable="false"></p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card mb-3">
+                                                        <div class="card-header py-3">Source:</div>
+                                                        <div class="card-body p-0 m-0">
+                                                            <p class="card-text p-2 px-lg-5" id="FlooringBylawsSource"
+                                                                contenteditable="false"></p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="accordion-item" id="WindowCoverings">
+                                            <h2 class="accordion-header">
+                                                <button aria-controls="WindowCoveringscollapse" aria-expanded="false"
+                                                    class="accordion-button collapsed mt-3"
+                                                    data-bs-target="#WindowCoveringscollapse" data-bs-toggle="collapse"
+                                                    type="button">
+                                                    Are there any bylaws related to the type and/or color of window
+                                                    coverings that are
+                                                    permitted?
+                                                </button>
+                                            </h2>
+                                            <div class="accordion-collapse collapse multi-collapse"
+                                                id="WindowCoveringscollapse">
+                                                <div class="accordion-body p-2 py-3">
+                                                    <div class="card mb-3">
+                                                        <div class="card-header py-3">Answer:</div>
+                                                        <div class="card-body p-0 m-0">
+                                                            <p class="card-text p-2 px-lg-5" id="WindowCoveringsAnswer"
+                                                                contenteditable="false"></p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card mb-3">
+                                                        <div class="card-header py-3">Source:</div>
+                                                        <div class="card-body p-0 m-0">
+                                                            <p class="card-text p-2 px-lg-5" id="WindowCoveringsSource"
+                                                                contenteditable="false"></p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- End Bylaws Questions -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <!-- Off-canvas button for small screens -->
+
+
+                <!-- Off-canvas sidebar for small screens -->
+                <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasSidebar"
+                    aria-labelledby="offcanvasSidebarLabel">
+                    <div class="offcanvas-header">
+                        <img src="https://oceanswelldigital.com/wp-content/uploads/2024/01/1aa.png" class="w-50"
+                            alt="Placeholder">
+                        <button type="button" class="btn" data-bs-dismiss="offcanvas" aria-label="Close"><i
+                                class="fa-solid fa-chevron-left"></i></button>
+                    </div>
+                    <div class="offcanvas-body w-100" id="ui-nav2">
+                    </div>
+                    <div class="offcanvas-footer row justify-content-center pb-2">
+                        <button class="btn btn-primary w-75"><span class="fs-4"><i
+                                    class="fa-solid fa-arrow-right-from-bracket me-2 "></i>Logout</span></button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+        <!-- Bootstrap Offcanvas -->
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="pdfViewerOffcanvas"
+            aria-labelledby="pdfViewerOffcanvasLabel" style="max-height: 100vh; overflow-y: hidden;">
+            <div class="offcanvas-body d-flex flex-column" style="height: 100%;">
+
+                <div id="pdfToolbar" style="margin-bottom: 10px;">
+                    <div class="mx-5" style="display: inline-block;">
+                        <label for="pageInput">page</label>
+                        <input type="number" id="pageInput" value="1" min="1" class="form-control"
+                            style="width: 60px; display: inline-block;" />
+                        <span> / <span id="pageCount">1</span></span>
+                    </div>
+                    <button id="zoomIn" class="btn btn-secondary"><i
+                            class="fa-solid fa-magnifying-glass-plus"></i></button>
+                    <button id="zoomOut" class="btn btn-secondary"><i
+                            class="fa-solid fa-magnifying-glass-minus"></i></button>
+                    <button id="fullScale" class="btn btn-secondary"><i class="fa-solid fa-expand"></i></button>
+                    <button type="button" class="btn btn-secondary float-end" data-bs-dismiss="offcanvas"
+                        aria-label="Close">Close</button>
+                </div>
+
+                <div id="pdfViewer" style="flex-grow: 1; overflow-y: auto;"></div>
+            </div>
+        </div>
+
+
+
+
+
+        <!-- CDN SCRIPTS -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.2.146/pdf.min.js"></script>
+
+        <!-- LOCAL SCRIPTS -->
+        <script src="/js/notify.js"></script>
+        <script src="/js/usersession.js"></script>
+        <script src="/js/ui.js"></script>
+        <script src="reports.js"></script>
+        <script src="/js/userlogout.js"></script>
+
+</body>
+
+</html>

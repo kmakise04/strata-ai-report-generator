@@ -1,0 +1,238 @@
+ /* Custom CSS for full-height layout */
+ @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+ *{
+     scroll-behavior: smooth;
+ }
+ body, html {
+     height: 100%;
+     margin: 0;
+     scroll-padding: 150px;
+     /* font-family: 'Inter', sans-serif; */
+     overflow: hidden;
+     background-color: #F1F5F6;
+     font-family: 'Open Sans', sans-serif;
+ }
+
+ .nav-link::after {
+    height: 2px;
+    width: 100%;
+    background-color: #4e73df;
+    display: block;
+ }
+
+ .nav-link:hover {
+     color:aqua;
+ }
+ /* Adjusting the container and row heights */
+ .container-fluid, .row {
+     height: 100%;
+ }
+
+ /* Full height for sidebar */
+ #sidebar {
+     overflow-y: auto;
+     height: 100%;
+ }
+
+ /* Adjusting the main content area */
+ main {
+     overflow-y: auto;
+     height: calc(100vh - 60px);  /* Full height for main content minus the navbar height */
+     padding: 20px;
+     box-sizing: border-box;
+ }
+
+ /* Space between sections and offset for sticky navbar */
+ section {
+     margin-bottom: 25px;
+     padding-top: 25px;
+     page-break-inside: avoid; /* Prevent breaking inside sections */
+ }
+
+ section:last-child {
+     margin-bottom: 60px; /* Ensure there's extra space at the bottom */
+ }
+
+ /* Styling for active link */
+ .nav-link.active {
+     font-weight: bold;
+     color: #0d6efd !important; /* Primary color for text */
+     background-color: #f8f9fa !important; /* Light background for active state */
+ }
+
+ /* Ensure text is visible in all states */
+ .nav-link {
+     color: #000 !important; /* Default color for text */
+ }
+
+ .nav-link:hover {
+     color: #0d6efd !important; /* Primary color on hover */
+     background-color: #e9ecef !important; /* Light background on hover */
+ }
+
+ .table-striped tbody tr:nth-of-type(odd) {
+     background-color: #f9f9f9;
+ }
+
+ .table-striped tbody tr:nth-of-type(even) {
+     background-color: #ffffff;
+ }
+
+ .table-hover tbody tr:hover {
+     background-color: #e2e2e2;
+ }
+
+ th {
+     background-color: #343a40;
+     color: white;
+     padding: 12px;
+     border-bottom: 2px solid #ddd;
+ }
+
+ td {
+     padding: 12px;
+     border-bottom: 1px solid #ddd;
+ }
+
+ @media (max-width: 767px) {
+     #sidebar {
+         display: none;
+     }
+ }
+
+/* Show the sidebar on screens 992px and larger */
+ @media (min-width: 768px) {
+     #sidebar {
+         display: block;
+     }
+     #topnav {
+         display: none;
+     }
+
+     #btntopnav {
+         display: none;
+     }
+ }
+ 
+ #topnav {
+     width: 250px;
+ }
+
+ .card {
+     position: relative;
+ }
+ .vertical-strip {
+     position: absolute;
+     top: 0;
+     bottom: 0;
+     left: 0;
+     width: 10px; /* Adjust width as needed */
+     background-color: #336BFF; /* Change color as needed */
+ }
+ .card-body-vertical {
+     margin-left: 12px; /* Adjust to prevent overlap with the strip */
+ }
+
+ .download-btn {
+     background-color: transparent; /* Transparent background for a cleaner dropdown item */
+     color: #007bff; /* Use the same blue color for the text */
+     border-radius: 0; /* Remove border radius */
+     padding: 8px 16px; /* Adjust padding for a dropdown menu item */
+     display: block; /* Block display for full-width clickable area */
+     text-align: left; /* Align text to the left */
+     font-size: 16px; /* Keep the font size readable */
+     font-weight: bold; /* Optional: keep bold text */
+     text-decoration: none; /* Remove underline */
+ }
+
+ .download-btn:hover {
+     background-color: #f8f9fa; /* Light background on hover */
+     color: #0056b3; /* Darker blue for hover */
+ }
+
+
+ @media (min-width: 767px) {
+     #pdfViewerOffcanvas {
+         width: 90vw; /* Adjust width on larger screens */
+         max-height: 100vh;
+         overflow-y: hidden;
+     }
+ }
+
+ @media (min-width: 768px) {
+     #pdfViewerOffcanvas {
+         width: 50vw; /* Adjust width on larger screens */
+         max-height: 100vh;
+         overflow-y: hidden;
+     }
+ }
+
+ @media (min-width: 768px) {
+ /* For medium screens and larger (like tablets) */
+ #offcanvasAddNote {
+     width: 50%; /* Set desired width for this screen size */
+     left: 25%;  /* Center the offcanvas horizontally */
+     right: auto;
+ }
+ }
+
+ @media (min-width: 992px) {
+ /* For large screens (like desktops) */
+ #offcanvasAddNote {
+     width: 40%;
+     left: 30%;
+     right: auto;
+ }
+ }
+
+ .action-icons {
+ position: absolute;
+ top: 10px;
+ right: 10px;
+ }
+
+ .action-icons i {
+ margin-left: 10px;
+ cursor: pointer;
+ }
+
+ #goTopBtn {
+     position: fixed;
+     bottom: 20px;
+     right: 20px;
+     background-color: rgba(0, 123, 255, 0.5); /* Semi-transparent blue background */
+     color: white;
+     border: none; /* No border */
+     padding: 10px;
+     cursor: pointer;
+     border-radius: 50%; /* Circular button */
+     font-size: 18px; /* Icon size */
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     transition: background-color 0.3s, color 0.3s;
+ }
+
+ #goTopBtn:hover {
+     background-color: rgba(0, 123, 255, 0.8); /* Darker transparent blue on hover */
+     color: white; /* Keep the icon white on hover */
+ }
+
+
+
+ .btn-outline-primary {
+     color: #2D6ED7; /* Change the text and border color */
+     border-color: #2D6ED7;
+     }
+
+     .btn-outline-primary:hover {
+     background-color: #2D6ED7; /* Set the background to your custom color */
+     color: white; /* Keep the text color white on hover */
+     border-color: #2D6ED7; /* Ensure the border matches the background */
+     }
+    
+     #dropdownMenuLink:hover {
+        border: 1px solid #6c757d; /* Add a gray border on hover */
+        border-radius: 50%;
+    }
+    

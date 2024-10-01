@@ -1,0 +1,78 @@
+
+body, html {
+  height: 100%;
+  margin: 0;
+  scroll-padding: 150px;
+  overflow-y: auto; /* Allow body to scroll */
+  background-color: #F1F5F6;
+}
+
+#main {
+  height: auto; /* Allow content to expand with the page */
+  overflow: unset; /* Disable scrolling on #main */
+  position: relative;
+}
+
+.clickable-card {
+  /* transition: transform 0.3s ease-out, box-shadow 0.3s ease-out; */
+  cursor: pointer;
+}
+
+
+
+.dropdown-menu {
+  z-index: 1100; /* Set the z-index higher so that it stays above other cards */
+}
+
+.clickable-card {
+  position: relative;
+  overflow: visible;
+}
+
+
+
+.clickable-card.dropdown-open {
+  z-index: 1100; /* Ensure the card stays above others when dropdown is open */
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.btn-outline-secondary {
+  padding: 0.5rem 1rem;
+}
+
+.dropdown-menu-end {
+  right: 5;
+  left: auto;
+}
+
+/* Optional: Fine-tune dropdown alignment */
+.dropdown-menu {
+  top: 100%; /* Ensure it's directly below the button */
+  left: auto !important; /* Make sure it's aligned to the right side of the button */
+  right: 0 !important; /* Align to the right */
+  transform: translate(0, 0) !important; /* Reset any unwanted popper.js transformations */
+}
+
+.container-fluid {
+  height: auto !important;
+  overflow: visible !important;
+}
+
+@media (max-width: 576px) {
+  .pagination {
+      flex-wrap: wrap;
+  }
+  .pagination .page-item {
+      flex: 1 1 auto;
+      text-align: center;
+  }
+  .pagination .page-link {
+      padding: 10px;
+      font-size: 14px;
+  }
+}

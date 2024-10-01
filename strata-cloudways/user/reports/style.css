@@ -1,0 +1,24 @@
+#main {
+  max-height: 100vh;
+  overflow-y: scroll;
+  position: relative;
+}
+@media (min-width: 992px) {
+  #pdfViewerOffcanvas.offcanvas-end {
+    width: 50%;
+  }
+}
+
+@media (max-width: 991.98px) {
+  #pdfViewerOffcanvas.offcanvas-end {
+    width: 100%;
+  }
+}
+
+.view-pdf {
+  font-size: 10px;
+}
+
+iframe {
+  min-height: 100vh;
+}

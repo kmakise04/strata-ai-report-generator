@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap Sidebar with Collapsible List</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/77ec53770a.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../../css/ui.css">
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar for large screens -->
+            <div class="d-none d-lg-flex flex-column justify-content-between vh-100 col-lg-3 col-xl-2 sidebar">
+                <div class="row justify-content-start">
+                    <img src="https://oceanswelldigital.com/wp-content/uploads/2024/01/1aa.png" class="w-75 py-3 ps-3"
+                        alt="Placeholder Image">
+                </div>
+                <nav class="row">
+                    <ul id="ui-nav" class="sidebar-nav">
+
+                    </ul>
+                </nav>
+                <div class="h-25"></div>
+                <div class="row">
+                    <button class="btn btn-primary"><span class="fs-4"><i
+                                class="fa-solid fa-arrow-right-from-bracket me-2 "></i>Logout</span></button>
+                </div>
+            </div>
+
+
+            <div class="col-12 col-lg-9 col-xl-10" id="main">
+                <nav class="navbar bg-body-tertiary">
+                    <div class="container-fluid">
+                        <div class="row justify-content-end w-100">
+                            <div class="d-lg-none col-2">
+                                <button class="btn" type="button" data-bs-toggle="offcanvas"
+                                    data-bs-target="#offcanvasSidebar" aria-controls="offcanvasSidebar">
+                                    <i class="fa-solid fa-chevron-right"></i>
+                                </button>
+                            </div>
+                            <form class="d-flex col-10 col-lg-3" role="search">
+                                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                                <button class="btn btn-outline-success" type="submit">Search</button>
+                            </form>
+                        </div>
+
+                    </div>
+                </nav>
+            </div>
+
+
+            <!-- Off-canvas button for small screens -->
+
+
+            <!-- Off-canvas sidebar for small screens -->
+            <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasSidebar"
+                aria-labelledby="offcanvasSidebarLabel">
+                <div class="offcanvas-header">
+                    <img src="https://oceanswelldigital.com/wp-content/uploads/2024/01/1aa.png" class="w-50"
+                        alt="Placeholder Image">
+                    <button type="button" class="btn" data-bs-dismiss="offcanvas" aria-label="Close"><i
+                            class="fa-solid fa-chevron-left"></i></button>
+                </div>
+                <div class="offcanvas-body w-100" id="ui-nav2">
+                </div>
+                <div class="offcanvas-footer row justify-content-center pb-2">
+                    <button class="btn btn-primary w-75"><span class="fs-4"><i
+                                class="fa-solid fa-arrow-right-from-bracket me-2 "></i>Logout</span></button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="../../js/ui.js"></script>
+    <script>
+        function processAndSendData(response) {
+                function generateResourceId() {
+                    return Math.random().toString(36).substr(2, 8);
+                }
+
+                function sendAjaxData(data, endpoint) {
+                    $.ajax({
+                        url: endpoint,
+                        type: "POST",
+                        contentType: "application/json",
+                        data: JSON.stringify(data),
+                        success: function (response) {
+                            console.log("Data sent successfully:", response);
+                        },
+                        error: function (xhr, status, error) {
+                            console.error("Error sending data:", error);
+                        }
+                    });
+                }
+
+                const mainEndpoint = "/mainEndpoint"; // Replace with your actual endpoint for main data
+                const fileEndpoint = "/fileEndpoint"; // Replace with your actual endpoint for file data
+
+                // Process each parent category dynamically
+                Object.keys(response).forEach(category => {
+                    response[category].forEach(question => {
+                        const resourceId = generateResourceId();
+
+                        // Send main data
+                        const mainData = {
+                            id: question.id,
+                            answer: question.answer,
+                            resourceId: resourceId
+                        };
+                        console.log(mainData);
+                        sendAjaxData(mainData, mainEndpoint);
+
+                        // Send file data
+                        question.sources.forEach(source => {
+                            const fileData = {
+                                filename: source.filename,
+                                page: source.page_number,
+                                resourceId: resourceId
+                            };
+                            console.log(fileData);
+                            sendAjaxData(fileData, fileEndpoint);
+                        });
+                    });
+                });
+            }
+
+            // Example usage
+            const response = {
+                "Form B": [
+                    {
+                        "id": "StrataLotNumber",
+                        "question": "What is the strata lot number? Note: Strata Lot number in summary.",
+                        "answer": "The Strata Lot number is not provided in the documents.",
+                        "sources": [
+                            {
+                                "filename": "vis-2876-bylaws-95361.pdf",
+                                "page_number": 1
+                            },
+                            {
+                                "filename": "vis-2876-bylaws-95361.pdf",
+                                "page_number": 30
+                            },
+                            {
+                                "filename": "vis-2876-bylaws-95361.pdf",
+                                "page_number": 31
+                            },
+                            {
+                                "filename": "vis-2876-bylaws-95361.pdf",
+                                "page_number": 2
+                            }
+                        ]
+                    }
+                    // Add other Form B items...
+                ],
+                "Bylaws": [
+                    {
+                        "id": "PetsTypeNumber",
+                        "question": "What type of pets and how many are permitted? If stated, note the amount in summary. If not stated, note: Disclaimer: The bylaws appear to be silent on the type and number of pets permitted. Please review the bylaws.",
+                        "answer": "\nThe bylaws do not specifically state the type and number of pets permitted. As a disclaimer, it appears that the bylaws do not address this issue. It is recommended to review the bylaws for further information.",
+                        "sources": [
+                            {
+                                "filename": "vis-2876-bylaws-95361.pdf",
+                                "page_number": 1
+                            },
+                            {
+                                "filename": "vis-2876-bylaws-95361.pdf",
+                                "page_number": 30
+                            },
+                            {
+                                "filename": "vis-2876-bylaws-95361.pdf",
+                                "page_number": 31
+                            },
+                            {
+                                "filename": "vis-2876-bylaws-95361.pdf",
+                                "page_number": 2
+                            }
+                        ]
+                    }
+                    // Add other Bylaws items...
+                ]
+            };
+
+            processAndSendData(response);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap Sidebar with Collapsible List</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/77ec53770a.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../../css/ui.css">
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar for large screens -->
+            <div class="d-none d-lg-flex flex-column justify-content-between vh-100 col-lg-3 col-xl-2 sidebar">
+                <div class="row justify-content-start">
+                    <img src="https://oceanswelldigital.com/wp-content/uploads/2024/01/1aa.png" class="w-75 py-3 ps-3"
+                        alt="Placeholder Image">
+                </div>
+                <nav class="row">
+                    <ul id="ui-nav" class="sidebar-nav">
+
+                    </ul>
+                </nav>
+                <div class="h-25"></div>
+                <div class="row">
+                    <button class="btn btn-primary" id="logout"><span class="fs-4"><i
+                                class="fa-solid fa-arrow-right-from-bracket me-2 "></i>Logout</span></button>
+                </div>
+            </div>
+
+            <div class="col-12 col-lg-9 col-xl-10" id="main">
+                <nav class="navbar bg-body-tertiary">
+                    <div class="container-fluid">
+                        <div class="row justify-content-end w-100">
+                            <div class="d-lg-none col-2">
+                                <button class="btn" type="button" data-bs-toggle="offcanvas"
+                                    data-bs-target="#offcanvasSidebar" aria-controls="offcanvasSidebar">
+                                    <i class="fa-solid fa-chevron-right"></i>
+                                </button>
+                            </div>
+                            <form class="d-flex col-10 col-lg-3" role="search">
+                                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                                <button class="btn btn-outline-success" type="submit">Search</button>
+                            </form>
+                        </div>
+
+                    </div>
+                </nav>
+
+                <div>
+                    <div>
+                        <nav>
+                            <div class="nav nav-tabs" id="nav-tab" role="tablist">
+
+                                <button class="nav-link active" id="nav-form-b-tab" data-bs-toggle="tab"
+                                    data-bs-target="#nav-form-b" type="button" role="tab" aria-controls="nav-form-b"
+                                    aria-selected="true">Form B.</button>
+                                <button class="nav-link" id="nav-bylaws-tab" data-bs-toggle="tab"
+                                    data-bs-target="#nav-bylaws" type="button" role="tab" aria-controls="nav-bylaws"
+                                    aria-selected="false">Bylaws</button>
+                                <button class="nav-link" id="nav-financial-tab" data-bs-toggle="tab"
+                                    data-bs-target="#nav-financial" type="button" role="tab"
+                                    aria-controls="nav-financial" aria-selected="false">Financials/Budgets</button>
+                                <button class="nav-link" id="nav-depreciation-tab" data-bs-toggle="tab"
+                                    data-bs-target="#nav-depreciation" type="button" role="tab"
+                                    aria-controls="nav-depreciation" aria-selected="false">Depreciation Report</button>
+                                <button class="nav-link" id="nav-insurance-tab" data-bs-toggle="tab"
+                                    data-bs-target="#nav-insurance" type="button" role="tab"
+                                    aria-controls="nav-insurance" aria-selected="false">Insurance</button>
+                                <button class="nav-link" id="nav-highlights-tab" data-bs-toggle="tab"
+                                    data-bs-target="#nav-highlights" type="button" role="tab"
+                                    aria-controls="nav-highlights" aria-selected="false">Highlights</button>
+                                <button class="nav-link" id="nav-documents-tab" data-bs-toggle="tab"
+                                    data-bs-target="#nav-documents" type="button" role="tab"
+                                    aria-controls="nav-documents" aria-selected="">Documents</button>
+                            </div>
+                        </nav>
+                        <div class="tab-content" id="nav-tabContent">
+
+
+                            <!-- Form B -->
+                            <div class="tab-pane fade show active" id="nav-form-b" role="tabpanel"
+                                aria-labelledby="nav-form-b-tab" tabindex="0">
+
+                                <div class="row p-4" style="overflow-y: scroll; max-height: 80vh;">
+                                    <div class="col-12 container mt-4 px-3">
+                                        <div class="row align-items-center mb-3">
+                                            <div class="col-12 bg-secondary-subtle d-flex flex-row align-items-end">
+                                                <p class=" p-1 m-0">Strata Lot</p>
+                                            </div>
+                                            <div class="col-12 p-1 m-0" id="StrataLotNumberAnswer">
+                                            </div>
+                                            <!-- <div class="col-12 p-1 m-0">
+                                                Sources: <span id="StrataLotNumberSource"></span>
+                                            </div> -->
+                                        </div>
+                                        <div class="row align-items-center mb-3">
+                                            <div class="col-12 bg-secondary-subtle d-flex flex-row align-items-end">
+                                                <p class=" p-1 m-0">Strata Plan</p>
+                                            </div>
+                                            <div class="col-12 p-1 m-0" id="StrataPlanNumberAnswer">
+                                            </div>
+                                            <!-- <div class="col-12 p-1 m-0">
+                                                Sources: <span id="StrataPlanNumberSource"></span>
+                                            </div> -->
+                                        </div>
+                                        <div class="row align-items-center mb-3">
+                                            <div class="col-12 bg-secondary-subtle d-flex flex-row align-items-end">
+                                                <p class=" p-1 m-0">Strata Fee</p>
+                                            </div>
+                                            <div class="col-12 p-1 m-0" id="MonthlyFeesAnswer">
+                                            </div>
+                                            <div class="col-12 p-1 m-0">
+                                                Sources: <span id="MonthlyFeesSource"></span>
+                                            </div>
+                                        </div>
+                                        <div class="row align-items-center mb-3">
+                                            <div class="col-12 bg-secondary-subtle d-flex flex-row align-items-end">
+                                                <p class=" p-1 m-0">Outstanding</p>
+                                            </div>
+                                            <div class="col-12 p-1 m-0" id="OwingAmountAnswer">
+                                            </div>
+                                            <div class="col-12 p-1 m-0">
+                                                Sources: <span id="OwingAmountSource"></span>
+                                            </div>
+                                        </div>
+                                        <div class="row align-items-center mb-3">
+                                            <div class="col-12 bg-secondary-subtle d-flex flex-row align-items-end">
+                                                <p class=" p-1 m-0">Alterations</p>
+                                            </div>
+                                            <div class="col-12 p-1 m-0" id="AlterationsAnswer">
+                                            </div>
+                                            <div class="col-12 p-1 m-0">
+                                                Sources: <span id="AlterationsSource"></span>
+                                            </div>
+                                        </div>
+                                        <div class="row align-items-center mb-3">
+                                            <div class="col-12 bg-secondary-subtle d-flex flex-row align-items-end">
+                                                <p class=" p-1 m-0">Special levies</p>
+                                            </div>
+                                            <div class="col-12 p-1 m-0" id="SpecialLevyAnswer">
+                                            </div>
+                                            <div class="col-12 p-1 m-0">
+                                                Sources: <span id="SpecialLevySource"></span>
+                                            </div>
+                                        </div>
+                                        <div class="row align-items-center mb-3">
+                                            <div class="col-12 bg-secondary-subtle d-flex flex-row align-items-end">
+                                                <p class=" p-1 m-0">Budget</p>
+                                            </div>
+                                            <div class="col-12 p-1 m-0" id="ExcessExpensesAnswer">
+                                            </div>
+                                            <div class="col-12 p-1 m-0">
+                                                Sources: <span id="ExcessExpensesSource"></span>
+                                            </div>
+                                        </div>
+                                        <div class="row align-items-center mb-3">
+                                            <div class="col-12 bg-secondary-subtle d-flex flex-row align-items-end">
+                                                <p class=" p-1 m-0">CRF balance</p>
+                                            </div>
+                                            <div class="col-12 p-1 m-0" id="ReserveFundAnswer">
+                                            </div>
+                                            <div class="col-12 p-1 m-0">
+                                                Sources: <span id="ReserveFundSource"></span>
+                                            </div>
+                                        </div>
+                                        <div class="row align-items-center mb-3">
+                                            <div class="col-12 bg-secondary-subtle d-flex flex-row align-items-end">
+                                                <p class=" p-1 m-0">Bylaw Amendments</p>
+                                            </div>
+                                            <div class="col-12 p-1 m-0" id="UnfiledBylawsAnswer">
+                                            </div>
+                                            <div class="col-12 p-1 m-0">
+                                                Sources: <span id="UnfiledBylawsSource"></span>
+                                            </div>
+                                        </div>
+                                        <div class="row align-items-center mb-3">
+                                            <div class="col-12 bg-secondary-subtle d-flex flex-row align-items-end">
+                                                <p class=" p-1 m-0">LTSA Resolutions</p>
+                                            </div>
+                                            <div class="col-12 p-1 m-0" id="UnfiledResolutionsAnswer">
+                                            </div>
+                                            <div class="col-12 p-1 m-0">
+                                                Sources: <span id="UnfiledResolutionsSource"></span>
+                                            </div>
+                                        </div>
+                                        <div class="row align-items-center mb-3">
+                                            <div class="col-12 bg-secondary-subtle d-flex flex-row align-items-end">
+                                                <p class=" p-1 m-0">Winding-up Resolutions</p>
+                                            </div>
+                                            <div class="col-12 p-1 m-0" id="WindingUpAnswer">
+                                            </div>
+                                            <div class="col-12 p-1 m-0">
+                                                Sources: <span id="WindingUpSource"></span>
+                                            </div>
+                                        </div>
+                                        <div class="row align-items-center mb-3">
+                                            <div class="col-12 bg-secondary-subtle d-flex flex-row align-items-end">
+                                                <p class=" p-1 m-0">3/4 Vote Resolutions</p>
+                                            </div>
+                                            <div class="col-12 p-1 m-0" id="PendingResolutionsAnswer">
+                                            </div>
+                                            <div class="col-12 p-1 m-0">
+                                                Sources: <span id="PendingResolutionsSource"></span>
+                                            </div>
+                                        </div>
+                                        <div class="row align-items-center mb-3">
+                                            <div class="col-12 bg-secondary-subtle d-flex flex-row align-items-end">
+                                                <p class=" p-1 m-0">Legal proceedings</p>
+                                            </div>
+                                            <div class="col-12 p-1 m-0" id="LegalProceedingsAnswer">
+                                            </div>
+                                            <div class="col-12 p-1 m-0">
+                                                Sources: <span id="LegalProceedingsSource"></span>
+                                            </div>
+                                        </div>
+                                        <div class="row align-items-center mb-3">
+                                            <div class="col-12 bg-secondary-subtle d-flex flex-row align-items-end">
+                                                <p class=" p-1 m-0">Work Orders</p>
+                                            </div>
+                                            <div class="col-12 p-1 m-0" id="WorkOrdersAnswer">
+                                            </div>
+                                            <div class="col-12 p-1 m-0">
+                                                Sources: <span id="WorkOrdersSource"></span>
+                                            </div>
+                                        </div>
+                                        <div class="row align-items-center mb-3">
+                                            <div class="col-12 bg-secondary-subtle d-flex flex-row align-items-end">
+                                                <p class=" p-1 m-0">Parking</p>
+                                            </div>
+                                            <div class="col-12 p-1 m-0" id="ParkingStallsAnswer">
+                                            </div>
+                                            <div class="col-12 p-1 m-0">
+                                                Sources: <span id="ParkingStallsSource"></span>
+                                            </div>
+                                        </div>
+                                        <div class="row align-items-center mb-3">
+                                            <div class="col-12 bg-secondary-subtle d-flex flex-row align-items-end">
+                                                <p class=" p-1 m-0">Storage</p>
+                                            </div>
+                                            <div class="col-12 p-1 m-0" id="StorageLockersAnswer">
+                                            </div>
+                                            <div class="col-12 p-1 m-0">
+                                                Sources: <span id="StorageLockersSource"></span>
+                                            </div>
+                                        </div>
+                                        <div class="row align-items-center mb-3">
+                                            <div class="col-12 bg-secondary-subtle d-flex flex-row align-items-end">
+                                                <p class=" p-1 m-0">Electrical Report</p>
+                                            </div>
+                                            <div class="col-12 p-1 m-0" id="ElectricalReportsAnswer">
+                                            </div>
+                                            <div class="col-12 p-1 m-0">
+                                                Sources: <span id="ElectricalReportsSource"></span>
+                                            </div>
+                                        </div>
+                                        <div class="row align-items-center mb-3">
+                                            <div class="col-12 bg-secondary-subtle d-flex flex-row align-items-end">
+                                                <p class=" p-1 m-0">Management Company</p>
+                                            </div>
+                                            <div class="col-12 p-1 m-0" id="ManagementCompanyAnswer">
+                                            </div>
+                                            <div class="col-12 p-1 m-0">
+                                                Sources: <span id="ManagementCompanySource"></span>
+                                            </div>
+                                        </div>
+                                        <div class="row align-items-center mb-3">
+                                            <div class="col-12 bg-secondary-subtle d-flex flex-row align-items-end">
+                                                <p class=" p-1 m-0">Date</p>
+                                            </div>
+                                            <div class="col-12 p-1 m-0" id="FormBDateAnswer">
+                                            </div>
+                                            <div class="col-12 p-1 m-0">
+                                                Sources: <span id="FormBDateSource"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <!-- Bylaws -->
+                            <div class="tab-pane fade" id="nav-bylaws" role="tabpanel" aria-labelledby="nav-bylaws-tab"
+                                tabindex="0">
+
+                                <div class="row p-4" style="overflow-y: scroll; max-height: 80vh;">
+                                    <div class="col-12 container mt-4 px-3">
+                                        <div class="row align-items-center mb-3">
+                                            <div class="col-12 bg-secondary-subtle d-flex flex-row align-items-end">
+                                                <p class=" p-1 m-0">Pets</p>
+                                            </div>
+                                            <div class="col-12 p-1 m-0" id="PetsTypeNumberAnswer">
+                                            </div>
+                                            <div class="col-12 p-1 m-0">
+                                                Sources: <span id="PetsTypeNumberSource"></span>
+                                            </div>
+                                        </div>
+                                        <div class="row align-items-center mb-3">
+                                            <div class="col-12 bg-secondary-subtle d-flex flex-row align-items-end">
+                                                <p class=" p-1 m-0">Smoking</p>
+                                            </div>
+                                            <div class="col-12 p-1 m-0" id="SmokingBylawsAnswer">
+                                            </div>
+                                            <div class="col-12 p-1 m-0">
+                                                Sources: <span id="SmokingBylawsSource"></span>
+                                            </div>
+                                        </div>
+                                        <div class="row align-items-center mb-3">
+                                            <div class="col-12 bg-secondary-subtle d-flex flex-row align-items-end">
+                                                <p class=" p-1 m-0">Rentals</p>
+                                            </div>
+                                            <div class="col-12 p-1 m-0" id="RentalRestrictionsAnswer">
+                                            </div>
+                                            <div class="col-12 p-1 m-0">
+                                                Sources: <span id="RentalRestrictionsSource"></span>
+                                            </div>
+                                        </div>
+                                        <div class="row align-items-center mb-3">
+                                            <div class="col-12 bg-secondary-subtle d-flex flex-row align-items-end">
+                                                <p class=" p-1 m-0">Barbecues</p>
+                                            </div>
+                                            <div class="col-12 p-1 m-0" id="BBQBylawsAnswer">
+                                            </div>
+                                            <div class="col-12 p-1 m-0">
+                                                Sources: <span id="BBQBylawsSource"></span>
+                                            </div>
+                                        </div>
+                                        <div class="row align-items-center mb-3">
+                                            <div class="col-12 bg-secondary-subtle d-flex flex-row align-items-end">
+                                                <p class=" p-1 m-0">Move Fees</p>
+                                            </div>
+                                            <div class="col-12 p-1 m-0" id="MovingFeesAnswer">
+                                            </div>
+                                            <div class="col-12 p-1 m-0">
+                                                Sources: <span id="MovingFeesSource"></span>
+                                            </div>
+                                        </div>
+                                        <div class="row align-items-center mb-3">
+                                            <div class="col-12 bg-secondary-subtle d-flex flex-row align-items-end">
+                                                <p class=" p-1 m-0">Air Conditioning</p>
+                                            </div>
+                                            <div class="col-12 p-1 m-0" id="ACBylawsAnswer">
+                                            </div>
+                                            <div class="col-12 p-1 m-0">
+                                                Sources: <span id="ACBylawsSource"></span>
+                                            </div>
+                                        </div>
+                                        <div class="row align-items-center mb-3">
+                                            <div class="col-12 bg-secondary-subtle d-flex flex-row align-items-end">
+                                                <p class=" p-1 m-0">Age Restriction</p>
+                                            </div>
+                                            <div class="col-12 p-1 m-0" id="AgeRestrictionsAnswer">
+                                            </div>
+                                            <div class="col-12 p-1 m-0">
+                                                Sources: <span id="AgeRestrictionsSource"></span>
+                                            </div>
+                                        </div>
+                                        <div class="row align-items-center mb-3">
+                                            <div class="col-12 bg-secondary-subtle d-flex flex-row align-items-end">
+                                                <p class=" p-1 m-0">Occupants</p>
+                                            </div>
+                                            <div class="col-12 p-1 m-0" id="OccupancyBylawsAnswer">
+                                            </div>
+                                            <div class="col-12 p-1 m-0">
+                                                Sources: <span id="OccupancyBylawsSource"></span>
+                                            </div>
+                                        </div>
+                                        <div class="row align-items-center mb-3">
+                                            <div class="col-12 bg-secondary-subtle d-flex flex-row align-items-end">
+                                                <p class=" p-1 m-0">Flooring</p>
+                                            </div>
+                                            <div class="col-12 p-1 m-0" id="FlooringBylawsAnswer">
+                                            </div>
+                                            <div class="col-12 p-1 m-0">
+                                                Sources: <span id="FlooringBylawsSource"></span>
+                                            </div>
+                                        </div>
+                                        <div class="row align-items-center mb-3">
+                                            <div class="col-12 bg-secondary-subtle d-flex flex-row align-items-end">
+                                                <p class=" p-1 m-0">Window Coverings</p>
+                                            </div>
+                                            <div class="col-12 p-1 m-0" id="WindowCoveringsAnswer">
+                                            </div>
+                                            <div class="col-12 p-1 m-0">
+                                                Sources: <span id="WindowCoveringsSource"></span>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <!-- Financials/Budgets -->
+                            <div class="tab-pane fade" id="nav-financial" role="tabpanel"
+                                aria-labelledby="nav-financial-tab" tabindex="0">
+
+                                <div class="row p-4" style="overflow-y: scroll; max-height: 80vh;">
+                                    <div class="col-12 container mt-4 px-3">
+                                        <div class="row align-items-center mb-3">
+                                            <div class="col-12 bg-secondary-subtle d-flex flex-row align-items-end">
+                                                <p class=" p-1 m-0">Current Budget</p>
+                                            </div>
+                                            <div class="col-12 p-1 m-0" id="CurrentBudgetAnswer">
+                                            </div>
+                                            <div class="col-12 p-1 m-0">
+                                                Sources: <span id="CurrentBudgetSource"></span>
+                                            </div>
+                                        </div>
+                                        <div class="row align-items-center mb-3">
+                                            <div class="col-12 bg-secondary-subtle d-flex flex-row align-items-end">
+                                                <p class=" p-1 m-0">Previous Year Budget</p>
+                                            </div>
+                                            <div class="col-12 p-1 m-0" id="PreviousYearBudgetAnswer">
+                                            </div>
+                                            <div class="col-12 p-1 m-0">
+                                                Sources: <span id="PreviousYearBudgetSource"></span>
+                                            </div>
+                                        </div>
+                                        <div class="row align-items-center mb-3">
+                                            <div class="col-12 bg-secondary-subtle d-flex flex-row align-items-end">
+                                                <p class=" p-1 m-0">Previous Year Budget (2+years)</p>
+                                            </div>
+                                            <div class="col-12 p-1 m-0" id="PreviousYearBudget2PlusAnswer">
+                                            </div>
+                                            <div class="col-12 p-1 m-0">
+                                                Sources: <span id="PreviousYearBudget2PlusSource"></span>
+                                            </div>
+                                        </div>
+                                        <div class="row align-items-center mb-3">
+                                            <div class="col-12 bg-secondary-subtle d-flex flex-row align-items-end">
+                                                <p class=" p-1 m-0">Calculate Fee Increase</p>
+                                            </div>
+                                            <div class="col-12 p-1 m-0" id="FeeIncreasesAnswer">
+                                            </div>
+                                            <div class="col-12 p-1 m-0">
+                                                Sources: <span id="FeeIncreasesSource"></span>
+                                            </div>
+                                        </div>
+                                        <div class="row align-items-center mb-3">
+                                            <div class="col-12 bg-secondary-subtle d-flex flex-row align-items-end">
+                                                <p class=" p-1 m-0">Insurance Premium</p>
+                                            </div>
+                                            <div class="col-12 p-1 m-0" id="InsurancePremiumAnswer">
+                                            </div>
+                                            <div class="col-12 p-1 m-0">
+                                                Sources: <span id="InsurancePremiumSource"></span>
+                                            </div>
+                                        </div>
+                                        <div class="row align-items-center mb-3">
+                                            <div class="col-12 bg-secondary-subtle d-flex flex-row align-items-end">
+                                                <p class=" p-1 m-0">Previous Insurance Premium</p>
+                                            </div>
+                                            <div class="col-12 p-1 m-0" id="PreviousInsurancePremiumAnswer">
+                                            </div>
+                                            <div class="col-12 p-1 m-0">
+                                                Sources: <span id="PreviousInsurancePremiumSource"></span>
+                                            </div>
+                                        </div>
+                                        <div class="row align-items-center mb-3">
+                                            <div class="col-12 bg-secondary-subtle d-flex flex-row align-items-end">
+                                                <p class=" p-1 m-0">Insurance Increase/Decrease</p>
+                                            </div>
+                                            <div class="col-12 p-1 m-0" id="InsuranceIncreaseDecreaseAnswer">
+                                            </div>
+                                            <div class="col-12 p-1 m-0">
+                                                Sources: <span id="InsuranceIncreaseDecreaseSource"></span>
+                                            </div>
+                                        </div>
+                                        <div class="row align-items-center mb-3">
+                                            <div class="col-12 bg-secondary-subtle d-flex flex-row align-items-end">
+                                                <p class=" p-1 m-0">CRF Contribution</p>
+                                            </div>
+                                            <div class="col-12 p-1 m-0" id="CRFContributionAnswer">
+                                            </div>
+                                            <div class="col-12 p-1 m-0">
+                                                Sources: <span id="CRFContributionSource"></span>
+                                            </div>
+                                        </div>
+                                        <div class="row align-items-center mb-3">
+                                            <div class="col-12 bg-secondary-subtle d-flex flex-row align-items-end">
+                                                <p class=" p-1 m-0">CRF Minimum</p>
+                                            </div>
+                                            <div class="col-12 p-1 m-0" id="CRFMinimumAnswer">
+                                            </div>
+                                            <div class="col-12 p-1 m-0">
+                                                Sources: <span id="CRFMinimumSource"></span>
+                                            </div>
+                                        </div>
+                                        <div class="row align-items-center mb-3">
+                                            <div class="col-12 bg-secondary-subtle d-flex flex-row align-items-end">
+                                                <p class=" p-1 m-0">Fiscal year-end - Previous year
+                                                </p>
+                                            </div>
+                                            <div class="col-12 p-1 m-0" id="FiscalYearEndPreviousAnswer">
+                                            </div>
+                                            <div class="col-12 p-1 m-0">
+                                                Sources: <span id="FiscalYearEndPreviousSource"></span>
+                                            </div>
+                                        </div>
+                                        <div class="row align-items-center mb-3">
+                                            <div class="col-12 bg-secondary-subtle d-flex flex-row align-items-end">
+                                                <p class=" p-1 m-0">Fiscal year-end - Prior to
+                                                    Previous year
+                                                </p>
+                                            </div>
+                                            <div class="col-12 p-1 m-0" id="FiscalYearEndPriorAnswer">
+                                            </div>
+                                            <div class="col-12 p-1 m-0">
+                                                Sources: <span id="FiscalYearEndPriorSource"></span>
+                                            </div>
+                                        </div>
+                                        <div class="row align-items-center mb-3">
+                                            <div class="col-12 bg-secondary-subtle d-flex flex-row align-items-end">
+                                                <p class=" p-1 m-0">Accounts Receivable (a)</p>
+                                            </div>
+                                            <div class="col-12 p-1 m-0" id="AccountsReceivableAnswer">
+                                            </div>
+                                            <div class="col-12 p-1 m-0">
+                                                Sources: <span id="AccountsReceivableSource"></span>
+                                            </div>
+                                        </div>
+                                        <div class="row align-items-center mb-3">
+                                            <div class="col-12 bg-secondary-subtle d-flex flex-row align-items-end">
+                                                <p class=" p-1 m-0">Accounts Receivable (b)</p>
+                                            </div>
+                                            <div class="col-12 p-1 m-0" id="AccountsReceivableSignificantAnswer">
+                                            </div>
+                                            <div class="col-12 p-1 m-0">
+                                                Sources: <span id="AccountsReceivableSignificantSource"></span>
+                                            </div>
+                                        </div>
+                                        <div class="row align-items-center mb-3">
+                                            <div class="col-12 bg-secondary-subtle d-flex flex-row align-items-end">
+                                                <p class=" p-1 m-0">Accounts Payable (a)</p>
+                                            </div>
+                                            <div class="col-12 p-1 m-0" id="AccountsPayableAnswer">
+                                            </div>
+                                            <div class="col-12 p-1 m-0">
+                                                Sources: <span id="AccountsPayableSource"></span>
+                                            </div>
+                                        </div>
+                                        <div class="row align-items-center mb-3">
+                                            <div class="col-12 bg-secondary-subtle d-flex flex-row align-items-end">
+                                                <p class=" p-1 m-0">Accounts Payable (b)</p>
+                                            </div>
+                                            <div class="col-12 p-1 m-0" id="AccountsPayableSignificantAnswer">
+                                            </div>
+                                            <div class="col-12 p-1 m-0">
+                                                Sources: <span id="AccountsPayableSignificantSource"></span>
+                                            </div>
+                                        </div>
+                                        <div class="row align-items-center mb-3">
+                                            <div class="col-12 bg-secondary-subtle d-flex flex-row align-items-end">
+                                                <p class=" p-1 m-0">Retained Earnings</p>
+                                            </div>
+                                            <div class="col-12 p-1 m-0" id="RetainedEarningsAnswer">
+                                            </div>
+                                            <div class="col-12 p-1 m-0">
+                                                Sources: <span id="RetainedEarningsSource"></span>
+                                            </div>
+                                        </div>
+                                        <div class="row align-items-center mb-3">
+                                            <div class="col-12 bg-secondary-subtle d-flex flex-row align-items-end">
+                                                <p class=" p-1 m-0">Current Earnings</p>
+                                            </div>
+                                            <div class="col-12 p-1 m-0" id="CurrentEarningsAnswer">
+                                            </div>
+                                            <div class="col-12 p-1 m-0">
+                                                Sources: <span id="CurrentEarningsSource"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <!-- Depreciation Reports -->
+                            <div class="tab-pane fade" id="nav-depreciation" role="tabpanel"
+                                aria-labelledby="nav-depreciation-tab" tabindex="0">
+
+                                <div class="row p-4" style="overflow-y: scroll; max-height: 80vh;">
+                                    <div class="col-12 container mt-4 px-3">
+                                        <div class="row align-items-center mb-3">
+                                            <div class="col-12 bg-secondary-subtle d-flex flex-row align-items-end">
+                                                <p class=" p-1 m-0">Interest</p>
+                                            </div>
+                                            <div class="col-12 p-1 m-0" id="InterestRateAnswer">
+                                            </div>
+                                            <div class="col-12 p-1 m-0">
+                                                Sources: <span id="InterestRateSource"></span>
+                                            </div>
+                                        </div>
+                                        <div class="row align-items-center mb-3">
+                                            <div class="col-12 bg-secondary-subtle d-flex flex-row align-items-end">
+                                                <p class=" p-1 m-0">Inflation</p>
+                                            </div>
+                                            <div class="col-12 p-1 m-0" id="InflationRateAnswer">
+                                            </div>
+                                            <div class="col-12 p-1 m-0">
+                                                Sources: <span id="InflationRateSource"></span>
+                                            </div>
+                                        </div>
+                                        <div class="row align-items-center mb-3">
+                                            <div class="col-12 bg-secondary-subtle d-flex flex-row align-items-end">
+                                                <p class=" p-1 m-0">Min. Balance</p>
+                                            </div>
+                                            <div class="col-12 p-1 m-0" id="CRFMinimumBalanceAnswer">
+                                            </div>
+                                            <div class="col-12 p-1 m-0">
+                                                Sources: <span id="CRFMinimumBalanceSource"></span>
+                                            </div>
+                                        </div>
+                                        <div class="row align-items-center mb-3">
+                                            <div class="col-12 bg-secondary-subtle d-flex flex-row align-items-end">
+                                                <p class=" p-1 m-0">Threshold amount</p>
+                                            </div>
+                                            <div class="col-12 p-1 m-0" id="ThresholdAmountAnswer">
+                                            </div>
+                                            <div class="col-12 p-1 m-0">
+                                                Sources: <span id="ThresholdAmountSource"></span>
+                                            </div>
+                                        </div>
+                                        <div class="row align-items-center mb-3">
+                                            <div class="col-12 bg-secondary-subtle d-flex flex-row align-items-end">
+                                                <p class=" p-1 m-0">Past Liabilities</p>
+                                            </div>
+                                            <div class="col-12 p-1 m-0" id="PastLiabilitiesAnswer">
+                                            </div>
+                                            <div class="col-12 p-1 m-0">
+                                                Sources: <span id="PastLiabilitiesSource"></span>
+                                            </div>
+                                        </div>
+                                        <div class="row align-items-center mb-3">
+                                            <div class="col-12 bg-secondary-subtle d-flex flex-row align-items-end">
+                                                <p class=" p-1 m-0">10 year projection</p>
+                                            </div>
+                                            <div class="col-12 p-1 m-0" id="TenYearProjectionAnswer">
+                                            </div>
+                                            <div class="col-12 p-1 m-0">
+                                                Sources: <span id="TenYearProjectionSource"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <!-- Insurance -->
+                            <div class="tab-pane fade" id="nav-insurance" role="tabpanel"
+                                aria-labelledby="nav-insurance-tab" tabindex="0">
+
+                                <div class="row p-4" style="overflow-y: scroll; max-height: 80vh;">
+                                    <div class="col-12 container mt-4 px-3">
+                                        <div class="row align-items-center mb-3">
+                                            <div class="col-12 bg-secondary-subtle d-flex flex-row align-items-end">
+                                                <p class=" p-1 m-0">Expiry Date</p>
+                                            </div>
+                                            <div class="col-12 p-1 m-0" id="PolicyExpiryDateAnswer">
+                                            </div>
+                                            <div class="col-12 p-1 m-0">
+                                                Sources: <span id="PolicyExpiryDateSource"></span>
+                                            </div>
+                                        </div>
+                                        <div class="row align-items-center mb-3">
+                                            <div class="col-12 bg-secondary-subtle d-flex flex-row align-items-end">
+                                                <p class=" p-1 m-0">Insurance Broker</p>
+                                            </div>
+                                            <div class="col-12 p-1 m-0" id="InsuranceBrokerAnswer">
+                                            </div>
+                                            <div class="col-12 p-1 m-0">
+                                                Sources: <span id="InsuranceBrokerSource"></span>
+                                            </div>
+                                        </div>
+                                        <div class="row align-items-center mb-3">
+                                            <div class="col-12 bg-secondary-subtle d-flex flex-row align-items-end">
+                                                <p class=" p-1 m-0">Insure Value</p>
+                                            </div>
+                                            <div class="col-12 p-1 m-0" id="InsuredValueAnswer">
+                                            </div>
+                                            <div class="col-12 p-1 m-0">
+                                                Sources: <span id="InsuredValueSource"></span>
+                                            </div>
+                                        </div>
+                                        <div class="row align-items-center mb-3">
+                                            <div class="col-12 bg-secondary-subtle d-flex flex-row align-items-end">
+                                                <p class=" p-1 m-0">Water Damage</p>
+                                            </div>
+                                            <div class="col-12 p-1 m-0" id="WaterDamageDeductibleAnswer">
+                                            </div>
+                                            <div class="col-12 p-1 m-0">
+                                                Sources: <span id="WaterDamageDeductibleSource"></span>
+                                            </div>
+                                        </div>
+                                        <div class="row align-items-center mb-3">
+                                            <div class="col-12 bg-secondary-subtle d-flex flex-row align-items-end">
+                                                <p class=" p-1 m-0">Flood</p>
+                                            </div>
+                                            <div class="col-12 p-1 m-0" id="FloodDeductibleAnswer">
+                                            </div>
+                                            <div class="col-12 p-1 m-0">
+                                                Sources: <span id="FloodDeductibleSource"></span>
+                                            </div>
+                                        </div>
+                                        <div class="row align-items-center mb-3">
+                                            <div class="col-12 bg-secondary-subtle d-flex flex-row align-items-end">
+                                                <p class=" p-1 m-0">EQ</p>
+                                            </div>
+                                            <div class="col-12 p-1 m-0" id="EarthquakeDeductibleAnswer">
+                                            </div>
+                                            <div class="col-12 p-1 m-0">
+                                                Sources: <span id="EarthquakeDeductibleSource"></span>
+                                            </div>
+                                        </div>
+                                        <div class="row align-items-center mb-3">
+                                            <div class="col-12 bg-secondary-subtle d-flex flex-row align-items-end">
+                                                <p class=" p-1 m-0">Co-insurance</p>
+                                            </div>
+                                            <div class="col-12 p-1 m-0" id="CoInsuranceClauseAnswer">
+                                            </div>
+                                            <div class="col-12 p-1 m-0">
+                                                Sources: <span id="CoInsuranceClauseSource"></span>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <!-- Highlights -->
+                            <div class="tab-pane fade" id="nav-highlights" role="tabpanel"
+                                aria-labelledby="nav-highlights-tab" tabindex="0">
+
+                                <div class="row p-4" style="overflow-y: scroll; max-height: 80vh;">
+                                    <div class="col-12 container mt-4 px-3">
+                                        <div class="row align-items-center mb-3">
+                                            <div class="col-12 bg-secondary-subtle d-flex flex-row align-items-end">
+                                                <p class=" p-1 m-0">Miscellaneous</p>
+                                            </div>
+                                            <div class="col-12 p-1 m-0" id="">
+                                            </div>
+                                            <div class="col-12 p-1 m-0">
+                                                Sources: <span id=""></span>
+                                            </div>
+                                        </div>
+                                        <div class="row align-items-center mb-3">
+                                            <div class="col-12 bg-secondary-subtle d-flex flex-row align-items-end">
+                                                <p class=" p-1 m-0">Electrical Planning Report</p>
+                                            </div>
+                                            <div class="col-12 p-1 m-0" id="">
+                                            </div>
+                                            <div class="col-12 p-1 m-0">
+                                                Sources: <span id=""></span>
+                                            </div>
+                                        </div>
+                                        <div class="row align-items-center mb-3">
+                                            <div class="col-12 bg-secondary-subtle d-flex flex-row align-items-end">
+                                                <p class=" p-1 m-0">Air Space Parcel</p>
+                                            </div>
+                                            <div class="col-12 p-1 m-0" id="">
+                                            </div>
+                                            <div class="col-12 p-1 m-0">
+                                                Sources: <span id=""></span>
+                                            </div>
+                                        </div>
+                                        <div class="row align-items-center mb-3">
+                                            <div class="col-12 bg-secondary-subtle d-flex flex-row align-items-end">
+                                                <p class=" p-1 m-0">Warranty</p>
+                                            </div>
+                                            <div class="col-12 p-1 m-0" id="">
+                                            </div>
+                                            <div class="col-12 p-1 m-0">
+                                                Sources: <span id=""></span>
+                                            </div>
+                                        </div>
+                                        <div class="row align-items-center mb-3">
+                                            <div class="col-12 bg-secondary-subtle d-flex flex-row align-items-end">
+                                                <p class=" p-1 m-0">2023 AGM</p>
+                                            </div>
+                                            <div class="col-12 p-1 m-0" id="">
+                                            </div>
+                                            <div class="col-12 p-1 m-0">
+                                                Sources: <span id=""></span>
+                                            </div>
+                                        </div>
+                                        <div class="row align-items-center mb-3">
+                                            <div class="col-12 bg-secondary-subtle d-flex flex-row align-items-end">
+                                                <p class=" p-1 m-0">Landscaping</p>
+                                            </div>
+                                            <div class="col-12 p-1 m-0" id="">
+                                            </div>
+                                            <div class="col-12 p-1 m-0">
+                                                Sources: <span id=""></span>
+                                            </div>
+                                        </div>
+                                        <div class="row align-items-center mb-3">
+                                            <div class="col-12 bg-secondary-subtle d-flex flex-row align-items-end">
+                                                <p class=" p-1 m-0">Fire Safety</p>
+                                            </div>
+                                            <div class="col-12 p-1 m-0" id="">
+                                            </div>
+                                            <div class="col-12 p-1 m-0">
+                                                Sources: <span id=""></span>
+                                            </div>
+                                        </div>
+                                        <div class="row align-items-center mb-3">
+                                            <div class="col-12 bg-secondary-subtle d-flex flex-row align-items-end">
+                                                <p class=" p-1 m-0">Water Incidents</p>
+                                            </div>
+                                            <div class="col-12 p-1 m-0" id="">
+                                            </div>
+                                            <div class="col-12 p-1 m-0">
+                                                Sources: <span id=""></span>
+                                            </div>
+                                        </div>
+                                        <div class="row align-items-center mb-3">
+                                            <div class="col-12 bg-secondary-subtle d-flex flex-row align-items-end">
+                                                <p class=" p-1 m-0">Property Access</p>
+                                            </div>
+                                            <div class="col-12 p-1 m-0" id="">
+                                            </div>
+                                            <div class="col-12 p-1 m-0">
+                                                Sources: <span id=""></span>
+                                            </div>
+                                        </div>
+                                        <div class="row align-items-center mb-3">
+                                            <div class="col-12 bg-secondary-subtle d-flex flex-row align-items-end">
+                                                <p class=" p-1 m-0">Amenities</p>
+                                            </div>
+                                            <div class="col-12 p-1 m-0" id="">
+                                            </div>
+                                            <div class="col-12 p-1 m-0">
+                                                Sources: <span id=""></span>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <!-- Documents -->
+                            <div class="tab-pane fade" id="nav-documents" role="tabpanel"
+                                aria-labelledby="nav-documents-tab" tabindex="0">
+
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="offcanvas offcanvas-end" tabindex="-1" id="pdfViewerOffcanvas"
+                    aria-labelledby="pdfViewerOffcanvasLabel" style="max-height: 100vh; overflow-y: hidden;">
+                    <div class="offcanvas-body d-flex flex-column" style="height: 100%;">
+                        <div id="pdfViewer" style="flex-grow: 1; overflow-y: auto;"></div>
+                    </div>
+                </div>
+
+
+
+
+                <!-- CDN SCRIPTS -->
+                <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.2.146/pdf.min.js"></script>
+                <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+
+                <!-- LOCAL SCRIPTS -->
+                <script src="/js/notify.js"></script>
+                <script src="/js/usersession.js"></script>
+                <script src="/js/ui.js"></script>
+                <script src="reports.js"></script>
+                <script src="/js/userlogout.js"></script>
+
+</body>
+
+</html>
