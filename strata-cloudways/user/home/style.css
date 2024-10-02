@@ -1,0 +1,52 @@
+
+body, html {
+  height: 100%;
+  margin: 0;
+  scroll-padding: 150px;
+  /* font-family: 'Inter', sans-serif; */
+  overflow: hidden; /* Prevent browser scroll */
+  background-color: #F1F5F6;
+}
+
+#main {
+  max-height: 100vh;
+  overflow-y: scroll;
+  position: relative;
+}
+
+.clickable-card {
+  transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+  cursor: pointer;
+}
+
+.clickable-card:hover {
+  transform: translateY(-5px); /* Lift the card slightly */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Add shadow effect */
+}
+
+.dropdown-menu {
+  z-index: 1100; /* Set the z-index higher so that it stays above other cards */
+}
+
+.clickable-card {
+  position: relative;
+  overflow: visible;
+}
+
+.clickable-card:hover {
+  z-index: 1; /* Set hover z-index lower than the dropdown */
+}
+
+.clickable-card.dropdown-open {
+  z-index: 1100; /* Ensure the card stays above others when dropdown is open */
+}
+
+.clickable-card.dropdown-open:hover {
+  transform: none; /* Disable hover effect */
+  box-shadow: none; /* Remove shadow effect */
+}
+
+#create {
+  position: relative;
+  margin-right: 20px; /* Add some space between the button and the reports */
+}
